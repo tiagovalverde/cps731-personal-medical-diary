@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.profile.PatientProfileEditActivity"
+    android:layout_margin="10dp"
+    >
+
+    <TextView
+        android:id="@+id/textViewWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weight"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textViewHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/height"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textViewBloodType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bloodType"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextBloodType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/textViewMedication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medication"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextMedication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/textViewAllergies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/allergies"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextAllergies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/textViewMedicalHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medicalHistory"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextMedicalHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/textViewFamilyHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/familyHistory"
+        android:textColor="#000000" />
+    <EditText
+        android:id="@+id/editTextFamilyHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="5dp" />
+
+
+    <Button
+        android:id="@+id/patientProfileSaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/saveButton" />
+
+</LinearLayout>
