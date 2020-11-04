@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Personal Medical Diary</string>
+    <string name="textview">TextView</string>
+    <string name="editButton">Edit</string>
+    <string name="saveButton">Save</string>
+    <string name="patientProfileTitle">Patient Profile</string>
+    <string name="details">Details</string>
+    <string name="button">Button</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="bloodType">Blood Type</string>
+    <string name="medication">Medication</string>
+    <string name="allergies">Allergies</string>
+    <string name="medicalHistory">Medical History</string>
+    <string name="familyHistory">Family History</string>
+    <string name="empty">N/A</string>
+    <string name="fname">First Name: </string>
+    <string name="lname">Last Name: </string>
+    <string name="phone">Phone: </string>
+    <string name="email">Email: </string>
+    <string name="carevigerInfo">Caregiver Info</string>
 </resources>

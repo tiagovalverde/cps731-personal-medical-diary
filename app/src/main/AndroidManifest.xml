@@ -9,13 +9,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <!-- Patient Profile Screens -->
+        <activity
+            android:name=".activities.profile.PatientProfileDetailsActivity"
+            android:label="Patient Profile">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.profile.PatientProfileEditActivity"
+            android:label="Edit Patient Profile"
+            android:parentActivityName=".activities.profile.PatientProfileDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
+        </activity>
+
+        <!-- Caregiver Screens -->
+        <activity
+            android:label="Caregivers Information"
+            android:name=".activities.caregiver.CaregiverEditActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
+        </activity>
+        <activity
+            android:label="Edit Caregiver Information"
+            android:name=".activities.caregiver.CarevigerDetailsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.caregiver.CarevigerDetailsActivity" />
+        </activity>
+
+        <!-- TODO main activity can be the splash or dashboard screen -->
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
