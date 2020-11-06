@@ -17,7 +17,6 @@ public interface PatientProfileDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(PatientProfile patientProfile);
 
-
     // Update multiple entries with one call.
     @Update
     public void updatePatientProfile(PatientProfile... words);
@@ -31,6 +30,6 @@ public interface PatientProfileDao {
     LiveData<List<PatientProfile>> getAllPatientProfiles();
 
     // Query with parameter that returns a specific word or words.
-    @Query("SELECT * FROM patient_profile WHERE id LIKE :word ")
-    public List<PatientProfile> findPatientProfile(String word);
+    @Query("SELECT * FROM patient_profile WHERE id LIKE :id ")
+    public List<PatientProfile> findPatientProfile(String id);
 }

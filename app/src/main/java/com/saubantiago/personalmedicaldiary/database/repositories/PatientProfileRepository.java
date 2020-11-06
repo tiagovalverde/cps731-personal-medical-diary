@@ -1,4 +1,4 @@
-package com.saubantiago.personalmedicaldiary.database;
+package com.saubantiago.personalmedicaldiary.database.repositories;
 
 import android.app.Application;
 import android.os.AsyncTask;
@@ -7,19 +7,17 @@ import androidx.lifecycle.LiveData;
 
 import com.saubantiago.personalmedicaldiary.database.dao.PatientProfileDao;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
-import com.saubantiago.personalmedicaldiary.database.room.PatientProfileDatabase;
+import com.saubantiago.personalmedicaldiary.database.room.AppRoomDatabase;
 
 import java.util.List;
 
-// TODO might have to be a generic class name because might host all entities
 public class PatientProfileRepository {
 
     private PatientProfileDao patientProfileDao;
     private LiveData<List<PatientProfile>> allPatientProfiles;
 
     public PatientProfileRepository(Application application) {
-        // TODO name might change
-        PatientProfileDatabase db = PatientProfileDatabase.getDatabase(application);
+        AppRoomDatabase db = AppRoomDatabase.getDatabase(application);
         patientProfileDao = db.patientProfileDao();
         allPatientProfiles = patientProfileDao.getAllPatientProfiles();
     }
