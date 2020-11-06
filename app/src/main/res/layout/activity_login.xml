@@ -8,13 +8,13 @@
     tools:context=".activities.login.Login">
 
     <TextView
-        android:id="@+id/textViewUsername"
+        android:id="@+id/textViewUsernameLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/username"
         android:textColor="#000000" />
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editTextUsernameValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -22,13 +22,13 @@
         android:text="" />
 
     <TextView
-        android:id="@+id/textViewPassword"
+        android:id="@+id/textViewPasswordLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:textColor="#000000" />
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/editTextPasswordValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

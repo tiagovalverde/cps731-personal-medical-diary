@@ -11,21 +11,21 @@
         android:id="@+id/PatientProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="50px"
+        android:padding="20dp"
         android:text="@string/patientProfileButton" />
 
     <Button
         android:id="@+id/MedicalRecords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="50px"
+        android:padding="20dp"
         android:text="@string/medicalRecordsButton" />
 
     <Button
         android:id="@+id/Assessments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="50px"
+        android:padding="20dp"
         android:text="@string/assessmentsButton" />
 
 
