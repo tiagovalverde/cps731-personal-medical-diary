@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.saubantiago.personalmedicaldiary.AppEnums;
 import com.saubantiago.personalmedicaldiary.R;
-import com.saubantiago.personalmedicaldiary.activities.caregiver.CarevigerDetailsActivity;
+import com.saubantiago.personalmedicaldiary.activities.caregiver.CaregiverDetailsActivity;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 import com.saubantiago.personalmedicaldiary.database.view.PatientProfileViewModel;
 
@@ -42,20 +42,15 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
         this.findAllViews();
         this.setListeners();
 
-        // Set up the WordViewModel.
+        // Set up the PatientProfileViewModel.
         patientProfileViewModel = ViewModelProviders.of(this).get(PatientProfileViewModel.class);
         // Get all the words from the database
         // and associate them to the adapter.
-
         patientProfileViewModel.getAllPatientProfiles().observe(this, new Observer<List<PatientProfile>>() {
             @Override
             public void onChanged(@Nullable final List<PatientProfile> patientProfiles) {
-                // Update the cached copy of the words in the adapter.
-                //testTextView.setText(patientProfiles.toString());
+                // update cached patient profile data
                 PatientProfileDetailsActivity.this.patientProfiles = patientProfiles;
-                System.out.println("==================");
-                System.out.println(PatientProfileDetailsActivity.this.patientProfiles.toString());
-                System.out.println("==================");
                 PatientProfileDetailsActivity.this.preFillData();
             }
         });
@@ -122,7 +117,7 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
     }
 
     public void launchCaregiverDetailsActivity() {
-        Intent intent = new Intent(this, CarevigerDetailsActivity.class);
+        Intent intent = new Intent(this, CaregiverDetailsActivity.class);
         startActivity(intent);
     }
 

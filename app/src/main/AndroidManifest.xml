@@ -31,18 +31,18 @@
 
         <!-- Caregiver Screens -->
         <activity
-            android:label="Caregivers Information"
+            android:label="Caregiver Information"
+            android:name=".activities.caregiver.CaregiverDetailsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.caregiver.CaregiverDetailsActivity" />
+        </activity>
+        <activity
+            android:label="Edit Caregiver Information"
             android:name=".activities.caregiver.CaregiverEditActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
-        </activity>
-        <activity
-            android:label="Edit Caregiver Information"
-            android:name=".activities.caregiver.CarevigerDetailsActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.saubantiago.personalmedicaldiary.activities.caregiver.CarevigerDetailsActivity" />
         </activity>
 
         <!-- TODO main activity can be the splash or dashboard screen -->

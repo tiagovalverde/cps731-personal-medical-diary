@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.saubantiago.personalmedicaldiary.database.PatientProfileRepository;
+import com.saubantiago.personalmedicaldiary.database.repositories.PatientProfileRepository;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 
 import java.util.List;

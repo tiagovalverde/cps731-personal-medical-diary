@@ -14,7 +14,7 @@
         android:text="@string/fname"
         android:textColor="#000000" />
     <EditText
-        android:id="@+id/editTextFname"
+        android:id="@+id/editTextFName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -62,7 +62,7 @@
         android:layout_marginBottom="5dp" />
 
     <Button
-        android:id="@+id/patientProfileSaveButton"
+        android:id="@+id/caregiverSaveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/saveButton" />
