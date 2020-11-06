@@ -12,7 +12,7 @@
 
         <!-- Login Screen -->
         <activity
-            android:name=".activities.login.Login"
+            android:name=".activities.login.LoginActivity"
             android:label="Login Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,9 @@
         <activity
             android:name=".activities.profile.PatientProfileDetailsActivity"
             android:label="Patient Profile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.dashboard.Dashboard" />
         </activity>
         <activity
             android:name=".activities.profile.PatientProfileEditActivity"
@@ -56,7 +59,7 @@
         </activity>
 
         <!-- TODO main activity can be the splash or dashboard screen -->
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

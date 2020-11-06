@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.login.Login">
+    tools:context=".activities.login.LoginActivity">
 
     <TextView
-        android:id="@+id/textViewUsernameLabel"
+        android:id="@+id/textViewEmailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/username"
         android:textColor="#000000" />
     <EditText
-        android:id="@+id/editTextUsernameValue"
+        android:id="@+id/editTextEmailValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:inputType="textPassword"
         android:layout_marginBottom="5dp"
         android:text="" />
 

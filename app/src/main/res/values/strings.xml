@@ -25,5 +25,6 @@
     <string name="patientProfileButton">Patient Profile</string>
     <string name="medicalRecordsButton">Medical Records</string>
     <string name="assessmentsButton">Assessments</string>
+    <string name="logoutBtn">Logout</string>
 
 </resources>

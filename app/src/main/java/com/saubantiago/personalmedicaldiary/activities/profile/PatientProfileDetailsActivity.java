@@ -41,6 +41,7 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
         // initialization
         this.findAllViews();
         this.setListeners();
+        this.displayBackButton();
 
         // Set up the PatientProfileViewModel.
         patientProfileViewModel = ViewModelProviders.of(this).get(PatientProfileViewModel.class);
@@ -132,5 +133,10 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
         else if(actionType == AppEnums.Actions.UPDATE) {
             this.patientProfileViewModel.update(updatedPatientProfile);
         }
+    }
+
+    private void displayBackButton() {
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
     }
 }
