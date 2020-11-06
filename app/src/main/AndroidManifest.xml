@@ -10,15 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- Patient Profile Screens -->
+        <!-- Login Screen -->
         <activity
-            android:name=".activities.profile.PatientProfileDetailsActivity"
-            android:label="Patient Profile">
+            android:name=".activities.login.Login"
+            android:label="Login Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <!-- Dashboard Screen -->
+        <activity
+            android:name=".activities.dashboard.Dashboard"
+            android:label="Dashboard">
+        </activity>
+        <!-- Patient Profile Screens -->
+        <activity
+            android:name=".activities.profile.PatientProfileDetailsActivity"
+            android:label="Patient Profile">
         </activity>
         <activity
             android:name=".activities.profile.PatientProfileEditActivity"

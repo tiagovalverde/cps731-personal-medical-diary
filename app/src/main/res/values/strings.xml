@@ -19,4 +19,11 @@
     <string name="phone">Phone: </string>
     <string name="email">Email: </string>
     <string name="carevigerInfo">Caregiver Info</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="login">Login</string>
+    <string name="patientProfileButton">Patient Profile</string>
+    <string name="medicalRecordsButton">Medical Records</string>
+    <string name="assessmentsButton">Assessments</string>
+
 </resources>
