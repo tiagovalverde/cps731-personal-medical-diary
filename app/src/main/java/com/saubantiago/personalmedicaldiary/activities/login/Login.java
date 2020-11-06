@@ -12,7 +12,7 @@ import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.activities.dashboard.Dashboard;
 
 public class Login extends AppCompatActivity {
-
+    // TODO Add splash screen functionality
     // Views
     TextView txtViewUsername, txtViewPassword;
     Button loginButton;
