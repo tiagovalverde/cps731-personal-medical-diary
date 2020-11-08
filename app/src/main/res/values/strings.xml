@@ -27,5 +27,8 @@
     <string name="assessmentsButton">Assessments</string>
     <string name="createAssessmentButton">Create Assessment</string>
     <string name="nextButton">Next</string>
+    <string-array name="assessments_array">
+        <item>COVID Assessment</item>
+    </string-array>
 
 </resources>

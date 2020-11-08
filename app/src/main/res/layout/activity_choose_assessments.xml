@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".activities.assessments.ChooseAssessmentsActivity">
 
+    <Spinner
+        android:id="@+id/AssessmentsSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/CreateChosenAssessment"
         android:layout_width="match_parent"

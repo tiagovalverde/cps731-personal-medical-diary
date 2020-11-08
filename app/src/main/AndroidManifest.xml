@@ -73,6 +73,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDetailsActivity" />
         </activity>
+        <activity
+            android:label="Edit Assessments"
+            android:name=".activities.assessments.AssessmentsEditActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.assessments.ChooseAssessmentsActivity" />
+        </activity>
     </application>
 
 </manifest>
