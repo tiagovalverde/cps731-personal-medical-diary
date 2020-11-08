@@ -11,11 +11,13 @@
         android:theme="@style/AppTheme">
 
         <!-- TODO main activity can be the splash or dashboard screen -->
-        <activity android:name=".MainActivity" />
+        <activity android:name="activities.MainActivity" />
 
         <!-- Login Screen -->
+        <!-- Auth Screens -->
+
         <activity
-            android:name=".activities.login.Login"
+            android:name=".activities.auth.LoginActivity"
             android:label="Login Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="Create Account"
+            android:name=".activities.auth.RegisterActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity" />
+        </activity>
+
         <!-- Dashboard Screen -->
         <activity
             android:name=".activities.dashboard.Dashboard"
@@ -32,6 +42,9 @@
         <activity
             android:name=".activities.profile.PatientProfileDetailsActivity"
             android:label="Patient Profile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.dashboard.Dashboard" />
         </activity>
         <activity
             android:name=".activities.profile.PatientProfileEditActivity"
@@ -44,19 +57,20 @@
 
         <!-- Caregiver Screens -->
         <activity
-            android:label="Caregiver Information"
-            android:name=".activities.caregiver.CaregiverDetailsActivity" >
+            android:name=".activities.caregiver.CaregiverDetailsActivity"
+            android:label="Caregiver Information">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.caregiver.CaregiverDetailsActivity" />
         </activity>
         <activity
-            android:label="Edit Caregiver Information"
-            android:name=".activities.caregiver.CaregiverEditActivity">
+            android:name=".activities.caregiver.CaregiverEditActivity"
+            android:label="Edit Caregiver Information">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
         </activity>
+
 
         <!-- Assessments Screens -->
         <activity
@@ -80,6 +94,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.assessments.ChooseAssessmentsActivity" />
         </activity>
+
     </application>
 
 </manifest>

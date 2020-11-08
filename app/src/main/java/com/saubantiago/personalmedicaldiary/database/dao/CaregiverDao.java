@@ -28,5 +28,5 @@ public interface CaregiverDao {
     LiveData<List<Caregiver>> getAll();
 
     @Query("SELECT * FROM caregiver WHERE id LIKE :id ")
-    public List<PatientProfile> findPatientProfile(int id);
+    public List<Caregiver> findCaregiver(int id);
 }
