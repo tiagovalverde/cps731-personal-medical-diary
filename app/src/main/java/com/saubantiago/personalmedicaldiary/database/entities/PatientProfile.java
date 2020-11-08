@@ -12,7 +12,10 @@ public class PatientProfile implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private int id;
+    private long id;
+
+    @ColumnInfo(name = "user_id")
+    private long userId;
 
     @ColumnInfo(name = "weight")
     private String weight;
@@ -32,12 +35,11 @@ public class PatientProfile implements Serializable {
     @ColumnInfo(name = "medical_history")
     private String medicalHistory;
 
+    // TODO add gender here, not user
+
     // Enum (dropdown selected)
     @ColumnInfo(name = "blood_type")
     private String bloodType;
-
-    // TODO add user relationship
-    //private int userId;
 
 
     public PatientProfile(
@@ -48,7 +50,6 @@ public class PatientProfile implements Serializable {
             String familyHistory,
             String medicalHistory,
             String bloodType) {
-        this.id = id;
         this.weight = weight;
         this.height = height;
         this.medication = medication;
@@ -92,12 +93,20 @@ public class PatientProfile implements Serializable {
                 '}';
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getWeight() {

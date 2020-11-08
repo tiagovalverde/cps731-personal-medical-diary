@@ -13,9 +13,12 @@ import android.widget.TextView;
 
 import com.saubantiago.personalmedicaldiary.AppEnums;
 import com.saubantiago.personalmedicaldiary.R;
+import com.saubantiago.personalmedicaldiary.SessionManager;
+import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.activities.caregiver.CaregiverDetailsActivity;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
-import com.saubantiago.personalmedicaldiary.database.view.PatientProfileViewModel;
+import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndPatientProfile;
+import com.saubantiago.personalmedicaldiary.database.view.UserViewModal;
 
 import java.util.List;
 
@@ -25,13 +28,15 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
     public static final String EXTRA_DATA_ACTION = "extra_word_action";
     public static final int CREATE_UPDATE_ACTIVITY_REQUEST_CODE = 1;
 
+    long userId;
+
     // Views
     TextView txtViewWeight, txtViewHeight, txtViewAllergies, txtViewMedication, txtVIewBloodType, txtViewMedicalHistory, txtViewFamilyHistory;
     Button editButton, caregiverButton;
 
     // live data
-    PatientProfileViewModel patientProfileViewModel;
-    private List<PatientProfile> patientProfiles;
+    UserViewModal userViewModal;
+    private UserAndPatientProfile userAndProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +44,38 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_profile_details);
 
         // initialization
+        this.getUserSession();
         this.findAllViews();
         this.setListeners();
+        this.displayBackButton();
+        this.setObserver();
+    }
 
-        // Set up the PatientProfileViewModel.
-        patientProfileViewModel = ViewModelProviders.of(this).get(PatientProfileViewModel.class);
-        // Get all the words from the database
-        // and associate them to the adapter.
-        patientProfileViewModel.getAllPatientProfiles().observe(this, new Observer<List<PatientProfile>>() {
+    private void getUserSession() {
+        if (SessionManager.getLoggedInUserStatus(this)) {
+            this.userId = SessionManager.getLoggedInUserId(this);
+        } else {
+            this.launchLoginActivity();
+        }
+    }
+
+    private void launchLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void setObserver() {
+        userViewModal = ViewModelProviders.of(this).get(UserViewModal.class);
+        userViewModal.getAllUsersAndProfile().observe(this, new Observer<List<UserAndPatientProfile>>() {
             @Override
-            public void onChanged(@Nullable final List<PatientProfile> patientProfiles) {
-                // update cached patient profile data
-                PatientProfileDetailsActivity.this.patientProfiles = patientProfiles;
-                PatientProfileDetailsActivity.this.preFillData();
+            public void onChanged(List<UserAndPatientProfile> usersAndPatientProfile) {
+                for(UserAndPatientProfile userAndProfile : usersAndPatientProfile) {
+                    if(userAndProfile.user.getId() == PatientProfileDetailsActivity.this.userId) {
+                        PatientProfileDetailsActivity.this.userAndProfile = userAndProfile;
+                        PatientProfileDetailsActivity.this.preFillData();
+                        return;
+                    }
+                }
             }
         });
     }
@@ -86,7 +110,7 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
 
     private void preFillData() {
         if(this.patientProfileExists()) {
-            PatientProfile patientProfile = this.patientProfiles.get(0);
+            PatientProfile patientProfile = this.userAndProfile.patientProfiles.get(0);
             this.txtViewWeight.setText(patientProfile.getWeight());
             this.txtViewHeight.setText(patientProfile.getHeight());
             this.txtViewMedication.setText(patientProfile.getMedication());
@@ -95,22 +119,16 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
             this.txtViewMedicalHistory.setText(patientProfile.getMedicalHistory());
             this.txtVIewBloodType.setText(patientProfile.getBloodType());
         }
-
-
-        TextView txtTest = (TextView) findViewById(R.id.textViewTest);
-        txtTest.setText(this.patientProfiles.toString());
-
-
     }
 
     private boolean patientProfileExists() {
-        return this.patientProfiles != null && !this.patientProfiles.isEmpty();
+        return this.userAndProfile != null && !this.userAndProfile.patientProfiles.isEmpty();
     }
 
     public void launchEditActivity() {
         Intent intent = new Intent(this, PatientProfileEditActivity.class);
         if (this.patientProfileExists()) {
-            PatientProfile patientProfile = this.patientProfiles.get(0);
+            PatientProfile patientProfile = this.userAndProfile.patientProfiles.get(0);
             intent.putExtra(EXTRA_DATA_PATIENT_PROFILE, patientProfile);
         }
         startActivityForResult(intent, CREATE_UPDATE_ACTIVITY_REQUEST_CODE);
@@ -127,10 +145,15 @@ public class PatientProfileDetailsActivity extends AppCompatActivity {
         AppEnums.Actions actionType = (AppEnums.Actions) data.getSerializableExtra(EXTRA_DATA_ACTION);
 
         if(actionType == AppEnums.Actions.CREATE) {
-            this.patientProfileViewModel.insert(updatedPatientProfile);
+            this.userViewModal.insertProfile(this.userAndProfile.user, updatedPatientProfile);
         }
         else if(actionType == AppEnums.Actions.UPDATE) {
-            this.patientProfileViewModel.update(updatedPatientProfile);
+            this.userViewModal.updateProfile(this.userAndProfile.user, updatedPatientProfile);
         }
+    }
+
+    private void displayBackButton() {
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
     }
 }

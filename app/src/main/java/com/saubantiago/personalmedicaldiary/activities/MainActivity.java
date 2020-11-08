@@ -1,4 +1,4 @@
-package com.saubantiago.personalmedicaldiary;
+package com.saubantiago.personalmedicaldiary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

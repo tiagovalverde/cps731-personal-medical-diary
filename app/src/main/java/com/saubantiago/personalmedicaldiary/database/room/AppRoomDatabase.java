@@ -8,13 +8,17 @@ import androidx.room.RoomDatabase;
 
 import com.saubantiago.personalmedicaldiary.database.dao.CaregiverDao;
 import com.saubantiago.personalmedicaldiary.database.dao.PatientProfileDao;
+import com.saubantiago.personalmedicaldiary.database.dao.UserDao;
+
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
+import com.saubantiago.personalmedicaldiary.database.entities.User;
 
 @Database(
         entities = {
                 PatientProfile.class,
-                Caregiver.class
+                Caregiver.class,
+                User.class
         },
         version = 1
 )
@@ -22,6 +26,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
 
     public abstract PatientProfileDao patientProfileDao();
     public abstract CaregiverDao caregiverDao();
+    public abstract UserDao userDao();
 
     private static AppRoomDatabase INSTANCE;
 
