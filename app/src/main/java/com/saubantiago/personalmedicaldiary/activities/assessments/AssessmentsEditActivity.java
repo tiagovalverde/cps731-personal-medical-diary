@@ -32,5 +32,5 @@ public class AssessmentsEditActivity extends AppCompatActivity {
     private void setListeners() {
 
     }
-    
+
 }
