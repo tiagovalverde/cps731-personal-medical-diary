@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- TODO main activity can be the splash or dashboard screen -->
+        <activity android:name=".MainActivity" />
+
         <!-- Login Screen -->
         <activity
             android:name=".activities.login.Login"
@@ -55,8 +58,21 @@
                 android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
         </activity>
 
-        <!-- TODO main activity can be the splash or dashboard screen -->
-        <activity android:name=".MainActivity" />
+        <!-- Assessments Screens -->
+        <activity
+            android:label="Assessments Details"
+            android:name=".activities.assessments.AssessmentsDetailsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.dashboard.Dashboard" />
+        </activity>
+        <activity
+            android:label="Choose Assessments"
+            android:name=".activities.assessments.ChooseAssessmentsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDetailsActivity" />
+        </activity>
     </application>
 
 </manifest>
