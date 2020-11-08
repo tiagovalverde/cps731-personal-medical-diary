@@ -12,7 +12,10 @@ public class Caregiver implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private int id;
+    private long id;
+
+    @ColumnInfo(name = "user_id")
+    private long userId;
 
     @ColumnInfo(name = "first_name")
     private String firstName;
@@ -25,9 +28,6 @@ public class Caregiver implements Serializable {
 
     @ColumnInfo(name = "email")
     private String email;
-
-    // TODO add user relationship
-    //private int userId;
 
     public Caregiver(String firstName, String lastName, String phone, String email) {
         this.firstName = firstName;
@@ -45,12 +45,20 @@ public class Caregiver implements Serializable {
         this.email = email;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {

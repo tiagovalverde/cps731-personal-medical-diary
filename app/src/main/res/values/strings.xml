@@ -21,10 +21,13 @@
     <string name="carevigerInfo">Caregiver Info</string>
     <string name="username">Username:</string>
     <string name="password">Password:</string>
+    <string name="password_confirm">Confirm Password:</string>
     <string name="login">Login</string>
+    <string name="register">Create account</string>
     <string name="patientProfileButton">Patient Profile</string>
     <string name="medicalRecordsButton">Medical Records</string>
     <string name="assessmentsButton">Assessments</string>
     <string name="logoutBtn">Logout</string>
+    <string name="openRegisterScreen">Create an account!</string>
 
 </resources>

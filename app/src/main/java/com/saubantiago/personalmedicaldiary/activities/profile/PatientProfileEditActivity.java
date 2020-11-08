@@ -82,6 +82,7 @@ public class PatientProfileEditActivity extends AppCompatActivity {
         } else {
             // Updating PatientProfile data
             updatedPatientProfile.setId(this.patientProfile.getId());
+            updatedPatientProfile.setUserId(this.patientProfile.getUserId());
             replyIntent.putExtra(PatientProfileDetailsActivity.EXTRA_DATA_ACTION, AppEnums.Actions.UPDATE);
         }
         replyIntent.putExtra(PatientProfileDetailsActivity.EXTRA_DATA_PATIENT_PROFILE, updatedPatientProfile);

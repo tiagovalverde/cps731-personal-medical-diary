@@ -30,14 +30,14 @@ public class SessionManager {
         return getSharedPreferences(ctx).getString(PREF_USER_EMAIL, "");
     }
 
-    public static void setLoggedInUserId(Context ctx, int id) {
+    public static void setLoggedInUserId(Context ctx, long id) {
         SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
-        editor.putInt(PREF_USER_ID, id);
+        editor.putLong(PREF_USER_ID, id);
         editor.commit();
     }
 
-    public static int getLoggedInUserId(Context ctx) {
-        return getSharedPreferences(ctx).getInt(PREF_USER_ID, -1);
+    public static long getLoggedInUserId(Context ctx) {
+        return getSharedPreferences(ctx).getLong(PREF_USER_ID, -1);
     }
 
     public static void setLoggedInUserStatus(Context ctx, boolean status) {

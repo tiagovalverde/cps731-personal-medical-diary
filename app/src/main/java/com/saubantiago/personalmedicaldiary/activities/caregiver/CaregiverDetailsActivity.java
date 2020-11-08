@@ -12,8 +12,12 @@ import android.widget.TextView;
 
 import com.saubantiago.personalmedicaldiary.AppEnums;
 import com.saubantiago.personalmedicaldiary.R;
+import com.saubantiago.personalmedicaldiary.SessionManager;
+import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
+import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndCaregivers;
 import com.saubantiago.personalmedicaldiary.database.view.CaregiverViewModel;
+import com.saubantiago.personalmedicaldiary.database.view.UserViewModal;
 
 import java.util.List;
 
@@ -23,13 +27,15 @@ public class CaregiverDetailsActivity extends AppCompatActivity {
     public static final String EXTRA_DATA_ACTION = "extra_data_action";
     public static final int CREATE_UPDATE_ACTIVITY_REQUEST_CODE = 1;
 
+    long userId;
+
     // Views
     Button editBtn;
     TextView txtViewFName, txtViewLName, txtViewPhone, txtViewEmail;
 
     // live data
-    CaregiverViewModel caregiverViewModel;
-    private List<Caregiver> caregivers;
+    UserViewModal userViewModal;
+    private UserAndCaregivers userAndCaregivers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +43,45 @@ public class CaregiverDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_careviger_details);
 
         // initialization
+        this.getUserSession();
         this.findAllViews();
         this.setListeners();
         this.displayBackButton();
+        this.setObserver();
+    }
 
-        // setup caregiver live data
-        caregiverViewModel = ViewModelProviders.of(this).get(CaregiverViewModel.class);
-        caregiverViewModel.getAllCaregivers().observe(this, new Observer<List<Caregiver>>() {
+    private void setObserver() {
+        userViewModal = ViewModelProviders.of(this).get(UserViewModal.class);
+        userViewModal.getAllUsersAndCaregivers().observe(this, new Observer<List<UserAndCaregivers>>() {
             @Override
-            public void onChanged(List<Caregiver> caregivers) {
-                // update cached caregivers data
-                CaregiverDetailsActivity.this.caregivers = caregivers;
-                CaregiverDetailsActivity.this.preFillData();
+            public void onChanged(List<UserAndCaregivers> userAndCaregivers) {
+                for(UserAndCaregivers userAndCaregiver : userAndCaregivers) {
+                    if(userAndCaregiver.user.getId() == CaregiverDetailsActivity.this.userId) {
+                        CaregiverDetailsActivity.this.userAndCaregivers = userAndCaregiver;
+                        CaregiverDetailsActivity.this.preFillData();
+                        return;
+                    }
+                }
             }
         });
     }
 
+    private void getUserSession() {
+        if (SessionManager.getLoggedInUserStatus(this)) {
+            this.userId = SessionManager.getLoggedInUserId(this);
+        } else {
+            this.launchLoginActivity();
+        }
+    }
+
+    private void launchLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
     private void preFillData() {
         if(this.caregiverExists()) {
-            Caregiver caregiver = this.caregivers.get(0);
+            Caregiver caregiver = this.userAndCaregivers.caregivers.get(0);
             txtViewFName.setText(caregiver.getFirstName());
             txtViewLName.setText(caregiver.getLastName());
             txtViewPhone.setText(caregiver.getPhone());
@@ -64,7 +90,7 @@ public class CaregiverDetailsActivity extends AppCompatActivity {
     }
 
     private boolean caregiverExists() {
-        return this.caregivers != null && !this.caregivers.isEmpty();
+        return this.userAndCaregivers != null && !this.userAndCaregivers.caregivers.isEmpty();
     }
 
     private void findAllViews() {
@@ -86,7 +112,7 @@ public class CaregiverDetailsActivity extends AppCompatActivity {
     public void launchEditActivity() {
         Intent intent = new Intent(this, CaregiverEditActivity.class);
         if (this.caregiverExists()) {
-            Caregiver caregiver = this.caregivers.get(0);
+            Caregiver caregiver = this.userAndCaregivers.caregivers.get(0);
             intent.putExtra(EXTRA_DATA_CAREGIVER, caregiver);
         }
         startActivityForResult(intent, CREATE_UPDATE_ACTIVITY_REQUEST_CODE);
@@ -98,10 +124,10 @@ public class CaregiverDetailsActivity extends AppCompatActivity {
         AppEnums.Actions actionType = (AppEnums.Actions) data.getSerializableExtra(EXTRA_DATA_ACTION);
 
         if(actionType == AppEnums.Actions.CREATE) {
-            this.caregiverViewModel.insert(updatedCaregiver);
+            this.userViewModal.insertCaregiver(this.userAndCaregivers.user, updatedCaregiver);
         }
         else if(actionType == AppEnums.Actions.UPDATE) {
-            this.caregiverViewModel.update(updatedCaregiver);
+            this.userViewModal.updateCaregiver(this.userAndCaregivers.user, updatedCaregiver);
         }
     }
 

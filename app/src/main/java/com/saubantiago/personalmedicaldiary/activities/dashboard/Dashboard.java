@@ -2,7 +2,6 @@ package com.saubantiago.personalmedicaldiary.activities.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.SessionManager;
-import com.saubantiago.personalmedicaldiary.activities.login.LoginActivity;
+import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity;
-import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 
 public class Dashboard extends AppCompatActivity {
     // Data
-    int currentUserId;
+    long userId;
 
     // Views
     Button patientProfileButton, medicalRecordsButton, assessmentsButton, logoutButton;
@@ -26,23 +24,10 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        // this is the user Id used to add the relationships
-        this.currentUserId = this.getUserIdFromIntent();
-
         // initialization
+        this.getUserSession();
         this.findAllViews();
         this.setListeners();
-    }
-
-    /**
-     * Obtains user id from logged in session provided by the login screen (splash screen later)
-     */
-    private int getUserIdFromIntent() {
-        if (getIntent().getExtras() != null) {
-            return getIntent().getIntExtra("user_id", -1);
-        } else {
-            return -1;
-        }
     }
 
     private void findAllViews() {
@@ -80,6 +65,13 @@ public class Dashboard extends AppCompatActivity {
         });
     }
 
+    private void getUserSession() {
+        if (SessionManager.getLoggedInUserStatus(this)) {
+            this.userId = SessionManager.getLoggedInUserId(this);
+        } else {
+            finish();
+        }
+    }
 
     private void launchPatientProfile() {
         Intent intent = new Intent(this, PatientProfileDetailsActivity.class);
@@ -87,11 +79,13 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void launchMedicalRecords() {
+        // TODO uncomment when medical records implemented
         //Intent intent = new Intent(this, MedicalRecordsDetailsActivity.class);
         //startActivity(intent);
     }
 
     private void launchAssessments() {
+        // TODO uncomment when assessments implemented
         //Intent intent = new Intent(this, AssessmentsDetailsActivity.class);
         //startActivity(intent);
     }
