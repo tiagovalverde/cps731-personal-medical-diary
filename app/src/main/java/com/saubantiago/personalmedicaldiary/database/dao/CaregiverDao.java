@@ -8,7 +8,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
-import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 
 import java.util.List;
 

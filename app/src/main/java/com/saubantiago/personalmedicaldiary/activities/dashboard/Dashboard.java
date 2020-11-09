@@ -14,7 +14,7 @@ import com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDe
 
 import com.saubantiago.personalmedicaldiary.SessionManager;
 import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
-
+import com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsActivity;
 import com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity;
 
 public class Dashboard extends AppCompatActivity {
@@ -35,7 +35,6 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void findAllViews() {
-        //Button
         patientProfileButton = findViewById(R.id.PatientProfile);
         medicalRecordsButton = findViewById(R.id.MedicalRecords);
         assessmentsButton = findViewById(R.id.Assessments);
@@ -83,15 +82,13 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void launchMedicalRecords() {
-        // TODO uncomment when medical records implemented
-        //Intent intent = new Intent(this, MedicalRecordsDetailsActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, MedicalRecordsActivity.class);
+        startActivity(intent);
     }
 
     private void launchAssessments() {
         Intent intent = new Intent(this, AssessmentsDetailsActivity.class);
         startActivity(intent);
-
     }
 
     private void logout() {

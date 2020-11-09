@@ -35,5 +35,8 @@
     <string name="logoutBtn">Logout</string>
     <string name="openRegisterScreen">Create an account!</string>
     <string name="assessmentTypeTextView">Assessment Type</string>
-
+    <string name="add_medical_record">Add new Medical Record</string>
+    <string name="created_at">Created At: </string>
+    <string name="medical_record_type">Medical Record Type: </string>
+    <string name="file_type">File Type: </string>
 </resources>

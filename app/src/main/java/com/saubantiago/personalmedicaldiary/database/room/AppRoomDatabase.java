@@ -8,12 +8,14 @@ import androidx.room.RoomDatabase;
 
 import com.saubantiago.personalmedicaldiary.database.dao.AnswersDao;
 import com.saubantiago.personalmedicaldiary.database.dao.CaregiverDao;
+import com.saubantiago.personalmedicaldiary.database.dao.MedicalRecordDao;
 import com.saubantiago.personalmedicaldiary.database.dao.PatientProfileDao;
 import com.saubantiago.personalmedicaldiary.database.dao.QuestionsDao;
 import com.saubantiago.personalmedicaldiary.database.dao.SelfAssessmentsDao;
 import com.saubantiago.personalmedicaldiary.database.dao.UserDao;
 
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
+import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 import com.saubantiago.personalmedicaldiary.database.entities.Questions;
 import com.saubantiago.personalmedicaldiary.database.entities.User;
@@ -27,7 +29,8 @@ import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
                 User.class,
                 Questions.class,
                 Answers.class,
-                SelfAssessments.class
+                SelfAssessments.class,
+                MedicalRecord.class
         },
         version = 1
 )
@@ -39,6 +42,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
     public abstract QuestionsDao questionsDao();
     public abstract AnswersDao answersDao();
     public abstract SelfAssessmentsDao selfAssessmentsDao();
+    public abstract MedicalRecordDao medicalRecord();
 
     private static AppRoomDatabase INSTANCE;
 

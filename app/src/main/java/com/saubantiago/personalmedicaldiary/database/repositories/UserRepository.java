@@ -7,12 +7,15 @@ import androidx.lifecycle.LiveData;
 
 import com.saubantiago.personalmedicaldiary.database.dao.UserDao;
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
+import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 import com.saubantiago.personalmedicaldiary.database.entities.User;
 import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndCaregivers;
+import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndMedicalRecords;
 import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndPatientProfile;
 import com.saubantiago.personalmedicaldiary.database.room.AppRoomDatabase;
 
+import java.sql.Date;
 import java.util.List;
 
 public class UserRepository {
@@ -36,6 +39,10 @@ public class UserRepository {
 
     public LiveData<List<UserAndCaregivers>> getAllUsersAndCaregivers() {
         return userDao.getUsersAndCaregivers();
+    }
+
+    public LiveData<List<UserAndMedicalRecords>> getAllUsersAndMedicalRecords() {
+        return userDao.getUsersAndMedicalRecords();
     }
 
     /***************************************
@@ -154,6 +161,49 @@ public class UserRepository {
         @Override
         protected Void doInBackground(Caregiver... caregivers) {
             asyncTaskUserDao.updateCaregiver(caregivers[0]);
+            return null;
+        }
+    }
+
+    /***************************************
+     * MEDICAL RECORD
+     ***************************************/
+    public void insertMedicalRecord(User user, MedicalRecord medicalRecord) {
+        medicalRecord.setUserId(user.getId());
+
+        long now = new Date(System.currentTimeMillis()).getTime();
+        medicalRecord.setCreatedAt(now);
+        medicalRecord.setUpdatedAt(now);
+
+        new UserRepository.insertMedicalRecordAsyncTask(userDao).execute(medicalRecord);
+    }
+
+    public void updateMedicalRecord(User user, MedicalRecord medicalRecord) {
+        medicalRecord.setUserId(user.getId());
+        medicalRecord.setUpdatedAt(new Date(System.currentTimeMillis()).getTime());
+        new UserRepository.updateMedicalRecordAsyncTask(userDao).execute(medicalRecord);
+    }
+
+    private static class insertMedicalRecordAsyncTask extends AsyncTask<MedicalRecord, Void, Void> {
+        private UserDao asyncTaskUserDao;
+
+        insertMedicalRecordAsyncTask(UserDao dao) { asyncTaskUserDao = dao; }
+
+        @Override
+        protected Void doInBackground(MedicalRecord... medicalRecords) {
+            asyncTaskUserDao.insertMedicalRecord(medicalRecords[0]);
+            return null;
+        }
+    }
+
+    private static class updateMedicalRecordAsyncTask extends AsyncTask<MedicalRecord, Void, Void> {
+        private UserDao asyncTaskUserDao;
+
+        updateMedicalRecordAsyncTask(UserDao dao) { asyncTaskUserDao = dao; }
+
+        @Override
+        protected Void doInBackground(MedicalRecord... medicalRecords) {
+            asyncTaskUserDao.updateMedicalRecord(medicalRecords[0]);
             return null;
         }
     }

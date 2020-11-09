@@ -10,12 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- TODO main activity can be the splash or dashboard screen -->
-        <activity android:name="activities.MainActivity" />
-
-        <!-- Login Screen -->
-        <!-- Auth Screens -->
-
+        <!-- Auth Screen -->
         <activity
             android:name=".activities.auth.LoginActivity"
             android:label="Login Page">
@@ -26,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="Create Account"
-            android:name=".activities.auth.RegisterActivity">
+            android:name=".activities.auth.RegisterActivity"
+            android:label="Create Account">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity" />
@@ -38,6 +33,7 @@
             android:name=".activities.dashboard.Dashboard"
             android:label="Dashboard">
         </activity>
+
         <!-- Patient Profile Screens -->
         <activity
             android:name=".activities.profile.PatientProfileDetailsActivity"
@@ -71,7 +67,6 @@
                 android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
         </activity>
 
-
         <!-- Assessments Screens -->
         <activity
             android:label="Assessments Details"
@@ -95,6 +90,22 @@
                 android:value="com.saubantiago.personalmedicaldiary.activities.assessments.ChooseAssessmentsActivity" />
         </activity>
 
+        <!-- Medical Records Screens  -->
+        <activity android:name=".activities.medicalrecords.MedicalRecordEditActivity"
+            android:label="Edit Medical Record">
+        </activity>
+        <activity android:name=".activities.medicalrecords.MedicalRecordDetailsActivity"
+            android:label="Medical Record Detail">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsActivity" />
+        </activity>
+        <activity android:name=".activities.medicalrecords.MedicalRecordsActivity"
+            android:label="Medical Records">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.dashboard.Dashboard" />
+        </activity>
     </application>
 
 </manifest>
