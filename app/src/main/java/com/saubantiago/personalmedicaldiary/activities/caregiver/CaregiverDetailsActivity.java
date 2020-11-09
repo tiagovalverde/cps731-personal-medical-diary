@@ -16,7 +16,6 @@ import com.saubantiago.personalmedicaldiary.SessionManager;
 import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
 import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndCaregivers;
-import com.saubantiago.personalmedicaldiary.database.view.CaregiverViewModel;
 import com.saubantiago.personalmedicaldiary.database.view.UserViewModal;
 
 import java.util.List;

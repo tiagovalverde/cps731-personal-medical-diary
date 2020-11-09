@@ -9,9 +9,11 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
+import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 import com.saubantiago.personalmedicaldiary.database.entities.User;
 import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndCaregivers;
+import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndMedicalRecords;
 import com.saubantiago.personalmedicaldiary.database.entities.relationships.UserAndPatientProfile;
 
 import java.util.List;
@@ -62,4 +64,17 @@ public abstract class UserDao {
 
     @Update
     public abstract void updateCaregiver(Caregiver caregiver);
+
+    /**************************
+     * Medical Records Queries
+     **************************/
+    @Transaction
+    @Query("SELECT * FROM users")
+    public abstract LiveData<List<UserAndMedicalRecords>> getUsersAndMedicalRecords();
+
+    @Insert
+    public abstract void insertMedicalRecord(MedicalRecord medicalRecord);
+
+    @Update
+    public abstract void updateMedicalRecord(MedicalRecord medicalRecord);
 }

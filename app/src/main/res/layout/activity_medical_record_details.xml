@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.medicalrecords.MedicalRecordDetailsActivity">
+
+    <Button
+        android:id="@+id/mr_editButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editButton" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mr_txtCreatedAtLabel"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:text="@string/created_at"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/mr_txtCreatedAtValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+
+    <!-- TODO add image preview -->
+    <!-- TODO add button to load pdf/img -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mr_txtFileTypeLabel"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:text="@string/file_type"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/mr_txtFileTypeValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="#000000" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mr_txtRecordTypeLabel"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="@string/medical_record_type"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/mr_txtRecordTypeValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+</LinearLayout>
