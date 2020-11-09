@@ -27,8 +27,14 @@
     <string name="patientProfileButton">Patient Profile</string>
     <string name="medicalRecordsButton">Medical Records</string>
     <string name="assessmentsButton">Assessments</string>
+    <string name="createAssessmentButton">Create Assessment</string>
+    <string name="nextButton">Next</string>
+    <string-array name="assessments_array">
+        <item>COVID Assessment</item>
+    </string-array>
     <string name="logoutBtn">Logout</string>
     <string name="openRegisterScreen">Create an account!</string>
+    <string name="assessmentTypeTextView">Assessment Type</string>
     <string name="add_medical_record">Add new Medical Record</string>
     <string name="created_at">Created At: </string>
     <string name="medical_record_type">Medical Record Type: </string>

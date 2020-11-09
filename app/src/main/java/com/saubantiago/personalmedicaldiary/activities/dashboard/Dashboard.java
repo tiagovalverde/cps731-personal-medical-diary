@@ -9,6 +9,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.saubantiago.personalmedicaldiary.R;
+
+import com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDetailsActivity;
+
 import com.saubantiago.personalmedicaldiary.SessionManager;
 import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsActivity;
@@ -84,9 +87,8 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void launchAssessments() {
-        // TODO uncomment when assessments implemented
-        //Intent intent = new Intent(this, AssessmentsDetailsActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, AssessmentsDetailsActivity.class);
+        startActivity(intent);
     }
 
     private void logout() {
