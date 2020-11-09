@@ -20,15 +20,15 @@ public class SelfAssessments implements Serializable {
 
 
 
-    public SelfAssessments(String AssessmentType) {
-        this.assessmentType = AssessmentType;
+    public SelfAssessments(String assessmentType) {
+        this.assessmentType = assessmentType;
 
     }
 
     @Ignore
-    public SelfAssessments(int id, String AssessmentType) {
+    public SelfAssessments(int id, String assessmentType) {
         this.id = id;
-        this.assessmentType = AssessmentType;
+        this.assessmentType = assessmentType;
     }
 
     public long getId() {

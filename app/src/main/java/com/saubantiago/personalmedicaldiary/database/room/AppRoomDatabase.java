@@ -17,13 +17,17 @@ import com.saubantiago.personalmedicaldiary.database.entities.Caregiver;
 import com.saubantiago.personalmedicaldiary.database.entities.PatientProfile;
 import com.saubantiago.personalmedicaldiary.database.entities.Questions;
 import com.saubantiago.personalmedicaldiary.database.entities.User;
+import com.saubantiago.personalmedicaldiary.database.entities.Answers;
+import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 
 @Database(
         entities = {
                 PatientProfile.class,
                 Caregiver.class,
                 User.class,
-                Questions.class
+                Questions.class,
+                Answers.class,
+                SelfAssessments.class
         },
         version = 1
 )
