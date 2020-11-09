@@ -34,5 +34,6 @@
     </string-array>
     <string name="logoutBtn">Logout</string>
     <string name="openRegisterScreen">Create an account!</string>
+    <string name="assessmentTypeTextView">Assessment Type</string>
 
 </resources>
