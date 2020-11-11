@@ -39,4 +39,6 @@
     <string name="created_at">Created At: </string>
     <string name="medical_record_type">Medical Record Type: </string>
     <string name="file_type">File Type: </string>
+    <string name="openForgotPassword">Forgot Password</string>
+    <string name="resetPassword">Reset Password</string>
 </resources>

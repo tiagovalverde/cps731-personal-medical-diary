@@ -27,6 +27,12 @@ public class User implements Serializable {
     @ColumnInfo(name = "last_name")
     private String lastName;
 
+    @Ignore
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
