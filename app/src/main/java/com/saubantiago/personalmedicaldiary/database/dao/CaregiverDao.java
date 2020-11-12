@@ -26,6 +26,6 @@ public interface CaregiverDao {
     @Query("SELECT * from caregiver ORDER BY id ASC")
     LiveData<List<Caregiver>> getAll();
 
-    @Query("SELECT * FROM caregiver WHERE id LIKE :id ")
-    public List<Caregiver> findCaregiver(int id);
+    @Query("SELECT * FROM caregiver WHERE user_uid LIKE :userUID ")
+    LiveData<List<Caregiver>> getAllByUserUID(String userUID);
 }

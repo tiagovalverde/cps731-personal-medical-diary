@@ -14,8 +14,8 @@ public class PatientProfile implements Serializable {
     @ColumnInfo(name = "id")
     private long id;
 
-    @ColumnInfo(name = "user_id")
-    private long userId;
+    @ColumnInfo(name = "user_uid")
+    private String userUID;
 
     @ColumnInfo(name = "weight")
     private String weight;
@@ -83,6 +83,7 @@ public class PatientProfile implements Serializable {
     public String toString() {
         return "PatientProfile{" +
                 "id=" + id +
+                ", userUID='" + userUID + '\'' +
                 ", weight='" + weight + '\'' +
                 ", height='" + height + '\'' +
                 ", medication='" + medication + '\'' +
@@ -101,12 +102,12 @@ public class PatientProfile implements Serializable {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getUserUID() {
+        return userUID;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
     }
 
     public String getWeight() {

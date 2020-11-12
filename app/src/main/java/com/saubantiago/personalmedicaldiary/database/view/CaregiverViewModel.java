@@ -27,6 +27,10 @@ public class CaregiverViewModel extends AndroidViewModel {
         return allCaregivers;
     }
 
+    public LiveData<List<Caregiver>> getAllCaregiversByUserUID(String userUID) {
+        return repository.getAllCaregiversByUID(userUID);
+    }
+
     public void insert(Caregiver caregiver) {
         repository.insert(caregiver);
     }

@@ -20,11 +20,14 @@ public class PatientProfileViewModel extends AndroidViewModel {
     public PatientProfileViewModel(@NonNull Application application) {
         super(application);
         repository = new PatientProfileRepository(application);
-        allPatientProfiles = repository.getAllPatientProfiles();
     }
 
     public LiveData<List<PatientProfile>> getAllPatientProfiles() {
-        return allPatientProfiles;
+        return repository.getAllPatientProfiles();
+    }
+
+    public LiveData<List<PatientProfile>> getAllPatientProfilesByUserUID(String userUID) {
+        return repository.getAllPatientProfilesByUserUID(userUID);
     }
 
     public void insert(PatientProfile patientProfile) {

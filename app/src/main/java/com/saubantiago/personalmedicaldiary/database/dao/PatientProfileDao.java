@@ -19,7 +19,7 @@ public interface PatientProfileDao {
 
     // Update multiple entries with one call.
     @Update
-    public void updatePatientProfile(PatientProfile... words);
+    void update(PatientProfile... patientProfiles);
 
     // Simple query that does not take parameters and returns nothing.
     @Query("DELETE FROM patient_profile")
@@ -27,9 +27,9 @@ public interface PatientProfileDao {
 
     // Simple query without parameters that returns values.
     @Query("SELECT * from patient_profile ORDER BY id ASC")
-    LiveData<List<PatientProfile>> getAllPatientProfiles();
+    LiveData<List<PatientProfile>> getAll();
 
     // Query with parameter that returns a specific word or words.
-    @Query("SELECT * FROM patient_profile WHERE id LIKE :id ")
-    public List<PatientProfile> findPatientProfile(String id);
+    @Query("SELECT * FROM patient_profile WHERE user_uid LIKE :userUID ")
+    LiveData<List<PatientProfile>> getAllByUserUID(String userUID);
 }

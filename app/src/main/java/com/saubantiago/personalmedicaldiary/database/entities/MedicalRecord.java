@@ -13,8 +13,8 @@ public class MedicalRecord implements Serializable {
     @ColumnInfo(name = "id")
     private long id;
 
-    @ColumnInfo(name = "user_id")
-    private long userId;
+    @ColumnInfo(name = "user_uid")
+    private String userUID;
 
     @ColumnInfo(name = "file_type")
     private String fileType;
@@ -59,12 +59,12 @@ public class MedicalRecord implements Serializable {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getUserUID() {
+        return userUID;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
     }
 
     public String getFileType() {
@@ -111,12 +111,12 @@ public class MedicalRecord implements Serializable {
     public String toString() {
         return "MedicalRecord{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", userUID='" + userUID + '\'' +
                 ", fileType='" + fileType + '\'' +
                 ", fileLocation='" + fileLocation + '\'' +
                 ", medicalRecordType='" + medicalRecordType + '\'' +
-                ", createdAt='" + createdAt + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

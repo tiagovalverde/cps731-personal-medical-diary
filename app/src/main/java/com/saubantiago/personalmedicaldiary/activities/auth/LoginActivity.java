@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,39 +17,26 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.saubantiago.personalmedicaldiary.R;
-import com.saubantiago.personalmedicaldiary.SessionManager;
 import com.saubantiago.personalmedicaldiary.Utils;
 import com.saubantiago.personalmedicaldiary.activities.dashboard.Dashboard;
-import com.saubantiago.personalmedicaldiary.database.entities.User;
-import com.saubantiago.personalmedicaldiary.database.view.UserViewModal;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    // TODO Add splash screen functionality
+    // Views
     EditText editTxtEmail, editTxtPassword;
     Button loginButton, registerButton, forgotPasswordButton;
     ProgressBar progressBar;
 
-    // live data
-    UserViewModal usersViewModal;
-    private List<User> users;
-
+    // Data
     private FirebaseAuth auth;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // TODO remove ????
-        //this.isLoggedIn();
-        auth = FirebaseAuth.getInstance();
-
-
         // initialization
+        auth = FirebaseAuth.getInstance();
         this.findAllViews();
         this.setListeners();
-        this.setUserObserver();
     }
 
     private void findAllViews() {
@@ -67,14 +52,14 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity.this.login();
+                login();
             }
         });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity.this.launchRegisterScreen();
+                launchRegisterScreen();
             }
         });
 
@@ -86,32 +71,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void setUserObserver() {
-        usersViewModal = ViewModelProviders.of(this).get(UserViewModal.class);
-        usersViewModal.getAllUsers().observe(this, new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
-                LoginActivity.this.users = users;
-            }
-        });
-    }
-
     private void launchDashboard() {
-        Intent intent = new Intent(this, Dashboard.class);
-        startActivity(intent);
+        startActivity(new Intent(this, Dashboard.class));
         finish();
     }
 
     private void launchRegisterScreen() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-    }
-
-    private void isLoggedIn() {
-        if(SessionManager.getLoggedInUserStatus(this)) {
-            this.launchDashboard();
-            finish();
-        }
     }
 
     private void login() {
@@ -128,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if(user.isEmailVerified()) {
-                                    LoginActivity.this.launchDashboard();
+                                    launchDashboard();
                                 } else {
                                     user.sendEmailVerification();
                                     Toast.makeText(LoginActivity.this, "Check your email to verify the account!", Toast.LENGTH_LONG).show();

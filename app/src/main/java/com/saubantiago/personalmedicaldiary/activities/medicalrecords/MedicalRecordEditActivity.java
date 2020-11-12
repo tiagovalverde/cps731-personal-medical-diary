@@ -3,11 +3,12 @@ package com.saubantiago.personalmedicaldiary.activities.medicalrecords;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.constants.Constants;
 import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
-import com.saubantiago.personalmedicaldiary.database.entities.User;
-import com.saubantiago.personalmedicaldiary.database.view.UserViewModal;
+import com.saubantiago.personalmedicaldiary.database.view.MedicalRecordViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MedicalRecordEditActivity extends AppCompatActivity {
-    MedicalRecord medicalRecord;
-    User user;
+    // Views
     Button saveButton;
     EditText editTextFileType, editTextMedicalRecordType;
-    UserViewModal userViewModal;
+
+    // Data
+    FirebaseUser user;
+    MedicalRecord medicalRecord;
+    MedicalRecordViewModel medicalRecordViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +32,11 @@ public class MedicalRecordEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medical_record_edit);
 
         // init
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        this.medicalRecordViewModel = ViewModelProviders.of(this).get(MedicalRecordViewModel .class);
         this.displayBackButton();
         this.findAllViews();
         this.setListeners();
-        this.userViewModal = ViewModelProviders.of(this).get(UserViewModal .class);
         this.getMedicalRecordFromIntent();
         if (this.medicalRecord != null) {
             this.preFillForm();
@@ -46,10 +51,8 @@ public class MedicalRecordEditActivity extends AppCompatActivity {
     private void getMedicalRecordFromIntent() {
         if (getIntent().getExtras() != null) {
             this.medicalRecord =  (MedicalRecord) getIntent().getSerializableExtra(Constants.EXTRA_DATA_MEDICAL_RECORD);
-            this.user = (User) getIntent().getSerializableExtra(Constants.EXTRA_DATA_USER);
         } else {
             this.medicalRecord =  null;
-            this.user =  null;
         }
     }
 
@@ -62,7 +65,7 @@ public class MedicalRecordEditActivity extends AppCompatActivity {
     private void setListeners() {
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                MedicalRecordEditActivity.this.saveChanges();
+                saveChanges();
             }
         });
     }
@@ -73,14 +76,16 @@ public class MedicalRecordEditActivity extends AppCompatActivity {
         Intent replyIntent = new Intent();
 
         if (this.medicalRecord != null) {
-            this.medicalRecord.setFileType(fileType);
-            this.medicalRecord.setMedicalRecordType(medicalRecordType);
-            this.userViewModal.updateMedicalRecord(user, medicalRecord);
+            // TODO add MedicalRecord remaining fields (correct data-types) when adding img upload
+            medicalRecord.setFileType(fileType);
+            medicalRecord.setMedicalRecordType(medicalRecordType);
+            medicalRecord.setUserUID(user.getUid());
+            medicalRecordViewModel.update(medicalRecord);
             replyIntent.putExtra(Constants.EXTRA_DATA_MEDICAL_RECORD, this.medicalRecord);
-
         } else {
             MedicalRecord newMedicalRecord = new MedicalRecord(fileType, medicalRecordType);
-            this.userViewModal.insertMedicalRecord(user, newMedicalRecord);
+            newMedicalRecord.setUserUID(user.getUid());
+            medicalRecordViewModel.insert(newMedicalRecord);
         }
 
         setResult(RESULT_OK, replyIntent);

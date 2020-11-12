@@ -97,10 +97,10 @@
             android:label="Medical Record Detail">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsActivity" />
+                android:value="com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsListActivity" />
         </activity>
         <activity
-            android:name=".activities.medicalrecords.MedicalRecordsActivity"
+            android:name=".activities.medicalrecords.MedicalRecordsListActivity"
             android:label="Medical Records">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

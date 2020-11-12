@@ -14,18 +14,19 @@ import java.util.List;
 public class PatientProfileRepository {
 
     private PatientProfileDao patientProfileDao;
-    private LiveData<List<PatientProfile>> allPatientProfiles;
 
     public PatientProfileRepository(Application application) {
         AppRoomDatabase db = AppRoomDatabase.getDatabase(application);
         patientProfileDao = db.patientProfileDao();
-        allPatientProfiles = patientProfileDao.getAllPatientProfiles();
     }
 
     public LiveData<List<PatientProfile>> getAllPatientProfiles() {
-        return allPatientProfiles;
+        return patientProfileDao.getAll();
     }
 
+    public LiveData<List<PatientProfile>> getAllPatientProfilesByUserUID(String userUID) {
+        return patientProfileDao.getAllByUserUID(userUID);
+    }
 
     /***************************************
      * CRUD ACTIONS
@@ -66,7 +67,7 @@ public class PatientProfileRepository {
 
         @Override
         protected Void doInBackground(final PatientProfile... params) {
-            asyncTaskPatientProfileDao.updatePatientProfile(params[0]);
+            asyncTaskPatientProfileDao.update(params[0]);
             return null;
         }
     }
