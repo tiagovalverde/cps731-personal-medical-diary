@@ -26,6 +26,10 @@ public class CaregiverRepository {
         return allCaregivers;
     }
 
+    public LiveData<List<Caregiver>> getAllCaregiversByUID(String userUID) {
+        return caregiverDao.getAllByUserUID(userUID);
+    }
+
     /***************************************
      * CRUD ACTIONS
      ***************************************/

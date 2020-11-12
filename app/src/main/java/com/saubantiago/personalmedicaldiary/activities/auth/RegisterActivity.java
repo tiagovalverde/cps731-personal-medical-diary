@@ -1,28 +1,29 @@
 package com.saubantiago.personalmedicaldiary.activities.auth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.saubantiago.personalmedicaldiary.PasswordManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.Utils;
-import com.saubantiago.personalmedicaldiary.database.entities.User;
-import com.saubantiago.personalmedicaldiary.database.view.UserViewModal;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.List;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+
     Button registerButton;
     EditText editTxtEmail, editTxtPassword;
+    ProgressBar progressBar;
 
-    UserViewModal usersViewModal;
-    private List<User> users;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,54 +31,50 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // initialization
+        auth = FirebaseAuth.getInstance();
         this.displayBackButton();
         this.findAllViews();
         this.setListeners();
-        this.setUserObserver();
     }
 
     private void createAccount() {
-        String email = this.editTxtEmail.getText().toString();
-        String password = this.editTxtPassword.getText().toString();
+        final String email = this.editTxtEmail.getText().toString();
+        final String password = this.editTxtPassword.getText().toString();
 
-
-        if (Utils.emailValid(this, email) && Utils.passwordValid(this, password)) {
-
-            if (Utils.emailExists(this.users, email)) {
-                Utils.showToast(this,"Email already associated with an account!");
-            } else {
-                String hashedPassword = PasswordManager.hashPassword(password);
-                User user = new User(email, hashedPassword, "", "");
-                this.usersViewModal.insert(user);
-                Utils.showToast(this,"Account created! You can now login!");
-                finish();
-            }
-        } else {
-            Utils.showToast(this, "Invalid email or password!");
+        if(!Utils.emailValid(editTxtEmail, email) || !Utils.passwordValid(editTxtPassword, password)) {
+            return;
         }
+
+        progressBar.setVisibility(View.VISIBLE);
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(RegisterActivity.this, "User has been registered!", Toast.LENGTH_LONG).show();
+                            finish();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Failed to register! Please try again!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
     }
+
 
     private void findAllViews() {
         editTxtEmail = findViewById(R.id.txtEmailValue);
         editTxtPassword = findViewById(R.id.txtPasswordValue);
         registerButton = findViewById(R.id.registerButton);
+        progressBar = findViewById(R.id.registerProgressBar);
     }
 
     private void setListeners() {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegisterActivity.this.createAccount();
-            }
-        });
-    }
-
-    private void setUserObserver() {
-        usersViewModal = ViewModelProviders.of(this).get(UserViewModal.class);
-        usersViewModal.getAllUsers().observe(this, new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
-                RegisterActivity.this.users = users;
+                createAccount();
             }
         });
     }

@@ -13,19 +13,16 @@ import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordDetailsActivity;
 import com.saubantiago.personalmedicaldiary.constants.Constants;
 import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
-import com.saubantiago.personalmedicaldiary.database.entities.User;
 
 import java.util.List;
 
 public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordHolder> {
     private final List<MedicalRecord> medicalRecords;
-    private final User user;
     private LayoutInflater inflater;
     private Context context;
 
-    public MedicalRecordAdapter(Context ctx, List<MedicalRecord> medicalRecords, User user) {
+    public MedicalRecordAdapter(Context ctx, List<MedicalRecord> medicalRecords) {
         this.medicalRecords = medicalRecords;
-        this.user = user;
         this.inflater = LayoutInflater.from(ctx);
         this.context = ctx;
     }
@@ -48,7 +45,6 @@ public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordHold
                 MedicalRecord medicalRecord = medicalRecords.get(position);
                 Intent intent = new Intent(context, MedicalRecordDetailsActivity.class);
                 intent.putExtra(Constants.EXTRA_DATA_MEDICAL_RECORD, medicalRecord);
-                intent.putExtra(Constants.EXTRA_DATA_USER, user);
                 context.startActivity(intent);
             }
         });

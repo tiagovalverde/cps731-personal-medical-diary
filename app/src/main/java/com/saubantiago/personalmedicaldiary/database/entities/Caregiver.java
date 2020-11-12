@@ -14,8 +14,8 @@ public class Caregiver implements Serializable {
     @ColumnInfo(name = "id")
     private long id;
 
-    @ColumnInfo(name = "user_id")
-    private long userId;
+    @ColumnInfo(name = "user_uid")
+    private String userUID;
 
     @ColumnInfo(name = "first_name")
     private String firstName;
@@ -53,14 +53,6 @@ public class Caregiver implements Serializable {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -93,10 +85,19 @@ public class Caregiver implements Serializable {
         this.email = email;
     }
 
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
+
     @Override
     public String toString() {
         return "Caregiver{" +
                 "id=" + id +
+                ", userUID='" + userUID + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +

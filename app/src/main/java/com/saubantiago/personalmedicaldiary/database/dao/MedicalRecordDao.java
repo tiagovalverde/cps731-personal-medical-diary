@@ -17,7 +17,7 @@ public interface MedicalRecordDao {
     void insert(MedicalRecord medicalRecord);
 
     @Update
-    public void update(MedicalRecord... medicalRecords);
+    void update(MedicalRecord... medicalRecords);
 
     @Query("DELETE FROM medical_record")
     void deleteAll();
@@ -25,6 +25,6 @@ public interface MedicalRecordDao {
     @Query("SELECT * from medical_record ORDER BY id ASC")
     LiveData<List<MedicalRecord>> getAll();
 
-    @Query("SELECT * FROM medical_record WHERE id LIKE :id ")
-    public List<MedicalRecord> findMedicalRecord(int id);
+    @Query("SELECT * FROM medical_record WHERE user_uid LIKE :userUID ")
+    LiveData<List<MedicalRecord>> getAllByUserUID(String userUID);
 }
