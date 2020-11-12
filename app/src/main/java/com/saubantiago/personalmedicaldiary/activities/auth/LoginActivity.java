@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.SessionManager;
 import com.saubantiago.personalmedicaldiary.Utils;
@@ -124,7 +125,14 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                LoginActivity.this.launchDashboard();
+                                progressBar.setVisibility(View.GONE);
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                if(user.isEmailVerified()) {
+                                    LoginActivity.this.launchDashboard();
+                                } else {
+                                    user.sendEmailVerification();
+                                    Toast.makeText(LoginActivity.this, "Check your email to verify the account!", Toast.LENGTH_LONG).show();
+                                }
                             } else {
                                 Toast.makeText(LoginActivity.this, "Failed to Login! Please check your credentials!", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);

@@ -9,17 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.auth.ForgotPasswordActivity"></activity>
-        <!-- Auth Screen -->
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.auth.LoginActivity"
             android:label="Login Page"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.auth.RegisterActivity"
@@ -27,7 +28,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity" />
-        </activity> <!-- Dashboard Screen -->
+        </activity>
+        <activity
+            android:label="Reset Password"
+            android:name=".activities.auth.ForgotPasswordActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity" />
+        </activity>
         <activity
             android:name=".activities.dashboard.Dashboard"
             android:label="Dashboard"></activity> <!-- Patient Profile Screens -->
@@ -45,7 +53,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
-        </activity> <!-- Caregiver Screens -->
+        </activity>
         <activity
             android:name=".activities.caregiver.CaregiverDetailsActivity"
             android:label="Caregiver Information">
@@ -59,7 +67,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.profile.PatientProfileDetailsActivity" />
-        </activity> <!-- Assessments Screens -->
+        </activity>
         <activity
             android:name=".activities.assessments.AssessmentsDetailsActivity"
             android:label="Assessments Details">
@@ -80,7 +88,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.saubantiago.personalmedicaldiary.activities.assessments.ChooseAssessmentsActivity" />
-        </activity> <!-- Medical Records Screens -->
+        </activity>
         <activity
             android:name=".activities.medicalrecords.MedicalRecordEditActivity"
             android:label="Edit Medical Record"></activity>

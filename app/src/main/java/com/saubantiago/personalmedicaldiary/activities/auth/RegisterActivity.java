@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String email = this.editTxtEmail.getText().toString();
         final String password = this.editTxtPassword.getText().toString();
 
-        if(Utils.emailValid(editTxtEmail, email) && Utils.passwordValid(editTxtPassword, password)) {
+        if(!Utils.emailValid(editTxtEmail, email) || !Utils.passwordValid(editTxtPassword, password)) {
             return;
         }
 
@@ -74,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()) {
                                                 Toast.makeText(RegisterActivity.this, "User has been registered!", Toast.LENGTH_LONG).show();
+                                                finish();
                                             } else {
                                                 Toast.makeText(RegisterActivity.this, "Failed to register! Please try again!", Toast.LENGTH_LONG).show();
                                             }

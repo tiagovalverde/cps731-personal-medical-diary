@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.saubantiago.personalmedicaldiary.R;
 
 import com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDetailsActivity;
@@ -29,7 +30,7 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         // initialization
-        this.getUserSession();
+        //this.getUserSession();
         this.findAllViews();
         this.setListeners();
     }
@@ -93,8 +94,7 @@ public class Dashboard extends AppCompatActivity {
 
     private void logout() {
         SessionManager.clearLoggedInUserSession(this);
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
