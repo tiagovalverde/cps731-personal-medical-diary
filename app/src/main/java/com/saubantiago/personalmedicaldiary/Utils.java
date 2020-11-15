@@ -5,7 +5,12 @@ import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class Utils {
+    public static String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+    public static String DATE_FORMAT = "yyyy-MM-dd";
 
     public static boolean emailValid(EditText view, String email) {
         if (email.isEmpty()) {
@@ -41,5 +46,9 @@ public class Utils {
 
     public static void showToast(Context ctx, String text) {
         Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
+    }
+
+    public static String formattedDateTime(long time, String format) {
+        return new SimpleDateFormat(format).format(new Date(time));
     }
 }

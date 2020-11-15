@@ -1,22 +1,30 @@
 package com.saubantiago.personalmedicaldiary.activities.medicalrecords;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.saubantiago.personalmedicaldiary.R;
+import com.saubantiago.personalmedicaldiary.Utils;
 import com.saubantiago.personalmedicaldiary.constants.Constants;
 import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
+import com.saubantiago.personalmedicaldiary.database.view.MedicalRecordViewModel;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MedicalRecordDetailsActivity extends AppCompatActivity {
-    Button editButton;
+    Button editButton, deleteButton;
     TextView txtViewCreatedAt, txtViewFileType, txtViewMedicalRecordType;
+    ImageView imageView;
 
     private MedicalRecord medicalRecord;
+    MedicalRecordViewModel medicalRecordViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,7 @@ public class MedicalRecordDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medical_record_details);
 
         // init
+        medicalRecordViewModel = ViewModelProviders.of(this).get(MedicalRecordViewModel.class);
         this.displayBackButton();
         this.getDataFromIntent();
         this.findAllViews();
@@ -33,16 +42,22 @@ public class MedicalRecordDetailsActivity extends AppCompatActivity {
 
     private void findAllViews() {
         editButton = findViewById(R.id.mr_editButton);
+        deleteButton = findViewById(R.id.mr_deleteButton);
         txtViewCreatedAt = findViewById(R.id.mr_txtCreatedAtValue);
         txtViewFileType = findViewById(R.id.mr_txtFileTypeValue);
         txtViewMedicalRecordType = findViewById(R.id.mr_txtRecordTypeValue);
+        imageView = findViewById(R.id.mr_details_imageView);
     }
 
     private void populateData() {
-        // TODO Format long date into formatted Date object
-        txtViewCreatedAt.setText(Long.toString(this.medicalRecord.getCreatedAt()));
-        txtViewFileType.setText(this.medicalRecord.getFileType());
-        txtViewMedicalRecordType.setText(this.medicalRecord.getMedicalRecordType());
+        long created_at = medicalRecord.getCreatedAt();
+        txtViewCreatedAt.setText(Utils.formattedDateTime(created_at, Utils.DATE_FORMAT));
+        txtViewFileType.setText(medicalRecord.getFileType());
+        txtViewMedicalRecordType.setText(medicalRecord.getMedicalRecordType());
+
+        Bitmap bm = BitmapFactory.decodeFile(medicalRecord.getFileLocation());
+        imageView.setImageBitmap(bm);
+        imageView.setVisibility(View.VISIBLE);
     }
 
     private void setListeners() {
@@ -51,10 +66,18 @@ public class MedicalRecordDetailsActivity extends AppCompatActivity {
                 launchEditActivity();
             }
         });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteMedicalRecord();
+            }
+        });
     }
 
-    private void loadDocument() {
-        // TODO add logic to show image in screen
+    private void deleteMedicalRecord() {
+        medicalRecordViewModel.delete(medicalRecord);
+        finish();
     }
 
     public void launchEditActivity() {
@@ -69,7 +92,8 @@ public class MedicalRecordDetailsActivity extends AppCompatActivity {
             this.medicalRecord = (MedicalRecord) data.getSerializableExtra(Constants.EXTRA_DATA_MEDICAL_RECORD);
             this.populateData();
         } catch (Exception e) {
-            // TODO handler error (activities nav issue)
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 

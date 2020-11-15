@@ -32,7 +32,7 @@ public class MedicalRecord implements Serializable {
     private long updatedAt;
 
     @Ignore
-    public MedicalRecord(String fileType,String medicalRecordType) {
+    public MedicalRecord(String fileType, String medicalRecordType) {
         this.fileType = fileType;
         this.medicalRecordType = medicalRecordType;
     }

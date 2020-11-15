@@ -10,6 +10,7 @@ import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.room.AppRoomDatabase;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 public class MedicalRecordRepository {
@@ -30,7 +31,7 @@ public class MedicalRecordRepository {
     }
 
     public void insert(MedicalRecord medicalRecord) {
-        long now = new Date(System.currentTimeMillis()).getTime();
+        long now = new Time(System.currentTimeMillis()).getTime();
         medicalRecord.setCreatedAt(now);
         medicalRecord.setUpdatedAt(now);
 
@@ -38,8 +39,12 @@ public class MedicalRecordRepository {
     }
 
     public void update(MedicalRecord medicalRecord) {
-        medicalRecord.setUpdatedAt(new Date(System.currentTimeMillis()).getTime());
+        medicalRecord.setUpdatedAt(new Time(System.currentTimeMillis()).getTime());
         new MedicalRecordRepository.updateAsyncTask(medicalRecordDao).execute(medicalRecord);
+    }
+
+    public void delete(MedicalRecord medicalRecord) {
+        new deleteAsyncTask(medicalRecordDao).execute(medicalRecord);
     }
 
     /***************************************
@@ -69,6 +74,20 @@ public class MedicalRecordRepository {
         @Override
         protected Void doInBackground(MedicalRecord... medicalRecords) {
             asyncTaskDao.update(medicalRecords[0]);
+            return null;
+        }
+    }
+
+    private static class deleteAsyncTask extends AsyncTask<MedicalRecord, Void, Void> {
+        private MedicalRecordDao asyncTaskDao;
+
+        deleteAsyncTask(MedicalRecordDao dao) {
+            asyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(MedicalRecord... medicalRecords) {
+            asyncTaskDao.delete(medicalRecords[0]);
             return null;
         }
     }

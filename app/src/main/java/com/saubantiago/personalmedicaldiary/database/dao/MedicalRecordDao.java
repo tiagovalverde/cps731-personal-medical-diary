@@ -2,6 +2,7 @@ package com.saubantiago.personalmedicaldiary.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -18,6 +19,9 @@ public interface MedicalRecordDao {
 
     @Update
     void update(MedicalRecord... medicalRecords);
+
+    @Delete
+    void delete(MedicalRecord medicalRecord);
 
     @Query("DELETE FROM medical_record")
     void deleteAll();
