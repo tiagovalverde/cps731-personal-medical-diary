@@ -6,4 +6,13 @@ public class AppEnums {
         UPDATE,
         DELETE
     }
+
+    public enum MedicalRecordType {
+        IMAGE {
+            public String toString() { return "IMAGE"; }
+        },
+        PDF {
+            public String toString() { return "PDF"; }
+        }
+    }
 }

@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.saubantiago.personalmedicaldiary.R;
 
-import com.saubantiago.personalmedicaldiary.SessionManager;
 import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.activities.caregiver.CaregiverDetailsActivity;
 import com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsListActivity;
@@ -76,20 +75,11 @@ public class Dashboard extends AppCompatActivity {
         });
     }
 
-    private void getUserSession() {
-        if (SessionManager.getLoggedInUserStatus(this)) {
-            this.userId = SessionManager.getLoggedInUserId(this);
-        } else {
-            finish();
-        }
-    }
-
     private void launchActivity(Class activityClass) {
         startActivity(new Intent(this, activityClass));
     }
 
     private void logout() {
-        SessionManager.clearLoggedInUserSession(this);
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(this, LoginActivity.class));
     }

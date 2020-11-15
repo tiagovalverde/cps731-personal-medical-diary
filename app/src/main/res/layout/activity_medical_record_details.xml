@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,72 +9,121 @@
 
     <Button
         android:id="@+id/mr_editButton"
-        android:layout_width="match_parent"
+        android:layout_width="139dp"
+        android:layout_height="43dp"
+        android:background="#488EFF"
+        android:text="@string/editButton"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <TextView
+        android:id="@+id/mr_txtFileTypeLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/editButton" />
+        android:text="@string/file_type"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.185" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/mr_txtRecordTypeLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="@string/medical_record_type"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.244" />
 
-        <TextView
-            android:id="@+id/mr_txtCreatedAtLabel"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:text="@string/created_at"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/mr_txtCreatedAtValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/empty"
-            android:textColor="#000000" />
-
-    </LinearLayout>
-
-
-    <!-- TODO add image preview -->
-    <!-- TODO add button to load pdf/img -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/mr_txtCreatedAtLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="@string/created_at"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
 
-        <TextView
-            android:id="@+id/mr_txtFileTypeLabel"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:text="@string/file_type"
-            android:textColor="#000000" />
+    <TextView
+        android:id="@+id/mr_txtRecordTypeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.244" />
 
-        <TextView
-            android:id="@+id/mr_txtFileTypeValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/empty"
-            android:textColor="#000000" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/mr_txtCreatedAtValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
 
-        <TextView
-            android:id="@+id/mr_txtRecordTypeLabel"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="@string/medical_record_type"
-            android:textColor="#000000" />
+    <TextView
+        android:id="@+id/mr_txtFileTypeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.185" />
 
-        <TextView
-            android:id="@+id/mr_txtRecordTypeValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/empty"
-            android:textColor="#000000" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/mr_deleteButton"
+        android:layout_width="115dp"
+        android:layout_height="44dp"
+        android:background="#CC3333"
+        android:text="@string/deleteButton"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/mr_details_imageView"
+        android:layout_width="227dp"
+        android:layout_height="316dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.713"
+        app:srcCompat="@drawable/plus_icon" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,42 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".activities.medicalrecords.MedicalRecordEditActivity">
 
-    <TextView
-        android:id="@+id/mr_txtFileType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/file_type"
-        android:textColor="#000000" />
+
     <EditText
-        android:id="@+id/mr_editTxtFileType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/mr_editTxtType"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:ems="10"
-        android:layout_marginBottom="5dp" />
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/mr_txtType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="304dp"
+        android:layout_height="21dp"
         android:text="@string/medical_record_type"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/mr_editTxtType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/mr_editTxtType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.488" />
 
     <Button
         android:id="@+id/mr_saveButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/saveButton" />
+        android:layout_width="341dp"
+        android:layout_height="43dp"
+        android:text="@string/saveButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/mr_imageView"
+        android:layout_width="227dp"
+        android:layout_height="316dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708"
+        app:srcCompat="@drawable/plus_icon" />
+
+    <Button
+        android:id="@+id/mr_takePictureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take Picture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.267" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

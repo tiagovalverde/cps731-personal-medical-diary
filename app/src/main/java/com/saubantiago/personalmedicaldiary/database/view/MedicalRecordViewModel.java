@@ -35,4 +35,8 @@ public class MedicalRecordViewModel extends AndroidViewModel {
     public void update(MedicalRecord medicalRecord) {
         repository.update(medicalRecord);
     }
+
+    public void delete(MedicalRecord medicalRecord) {
+        repository.delete(medicalRecord);
+    }
 }
