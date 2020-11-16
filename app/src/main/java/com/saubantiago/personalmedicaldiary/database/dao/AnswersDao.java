@@ -2,6 +2,7 @@ package com.saubantiago.personalmedicaldiary.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -26,6 +27,7 @@ public interface AnswersDao {
     @Query("SELECT * from answers ORDER BY id ASC")
     LiveData<List<Answers>> getAll();
 
-    @Query("SELECT * FROM answers WHERE id LIKE :id ")
-    public List<Answers> findAnswers(int id);
+    @Query("SELECT * FROM answers WHERE user_uid LIKE :userUID ")
+    public List<Answers> findAnswers(String userUID);
+
 }

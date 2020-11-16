@@ -18,6 +18,8 @@ public class SelfAssessments implements Serializable {
     @ColumnInfo(name = "AssessmentType")
     private String assessmentType;
 
+    @ColumnInfo(name = "user_uid")
+    private String userUID;
 
 
     public SelfAssessments(String assessmentType) {
@@ -45,6 +47,14 @@ public class SelfAssessments implements Serializable {
 
     public void setAssessmentType(String assessmentType){
         this.assessmentType = assessmentType;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
+
+    public String getUserUID() {
+        return userUID;
     }
 
     @Override
