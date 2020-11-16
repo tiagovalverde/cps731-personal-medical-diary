@@ -18,30 +18,27 @@ public class Answers implements Serializable {
     @ColumnInfo(name = "answer")
     private String answer;
 
-    @ColumnInfo(name = "user_uid")
-    private String userUID;
-
     @ColumnInfo(name = "assessment_id")
     private String assessmentID;
 
     @ColumnInfo(name = "question_id")
     private String questionID;
 
+    @Ignore
     public Answers(String answer) {
         this.answer = answer;
 
     }
 
     @Ignore
-    public Answers(int id, String answer) {
+    public Answers(long id, String answer) {
         this.id = id;
         this.answer = answer;
     }
 
-    public Answers(int id, String answer, String userUID, String assessmentID, String questionID) {
+    public Answers(long id, String answer, String assessmentID, String questionID) {
         this.id = id;
         this.answer = answer;
-        this.userUID = userUID;
         this.assessmentID = assessmentID;
         this.questionID = questionID;
     }
@@ -62,13 +59,6 @@ public class Answers implements Serializable {
         this.answer = answer;
     }
 
-    public void setUserUID(String userUID) {
-        this.userUID = userUID;
-    }
-
-    public String getUserUID() {
-        return userUID;
-    }
 
     public void setAssessmentID(String assessmentID) {
         this.assessmentID= assessmentID;
