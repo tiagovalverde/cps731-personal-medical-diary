@@ -27,7 +27,7 @@ public interface AnswersDao {
     @Query("SELECT * from answers ORDER BY id ASC")
     LiveData<List<Answers>> getAll();
 
-    @Query("SELECT * FROM answers WHERE user_uid LIKE :userUID ")
-    public List<Answers> findAnswers(String userUID);
+    @Query("SELECT * FROM answers WHERE :id LIKE :id ")
+    public List<Answers> findAnswers(long id);
 
 }
