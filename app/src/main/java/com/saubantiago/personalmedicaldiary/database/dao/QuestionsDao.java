@@ -27,5 +27,5 @@ public interface QuestionsDao {
     LiveData<List<Questions>> getAll();
 
     @Query("SELECT * FROM questions WHERE id LIKE :id ")
-    public List<Questions> findQuestions(int id);
+    public List<Questions> getQuestionsByID(int id);
 }

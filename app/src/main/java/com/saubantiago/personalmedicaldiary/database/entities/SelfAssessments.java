@@ -22,15 +22,17 @@ public class SelfAssessments implements Serializable {
     private String userUID;
 
 
-    public SelfAssessments(String assessmentType) {
+    public SelfAssessments(String assessmentType, String userUID) {
         this.assessmentType = assessmentType;
+        this.userUID = userUID;
 
     }
 
     @Ignore
-    public SelfAssessments(int id, String assessmentType) {
+    public SelfAssessments(int id, String assessmentType, String userUID) {
         this.id = id;
         this.assessmentType = assessmentType;
+        this.userUID = userUID;
     }
 
     public long getId() {
@@ -62,6 +64,7 @@ public class SelfAssessments implements Serializable {
         return "SelfAssessments{" +
                 "id=" + id +
                 ", assessmentType='" + assessmentType + '\'' +
+                ", userUID='" + userUID + '\'' +
                 '}';
     }
 }

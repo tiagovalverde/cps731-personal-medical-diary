@@ -14,7 +14,6 @@ import java.util.List;
 public class SelfAssessmentsViewModel extends AndroidViewModel {
 
     private SelfAssessmentsRepository repository;
-
     private LiveData<List<SelfAssessments>> allSelfAssessments;
 
     public SelfAssessmentsViewModel(@NonNull Application application) {

@@ -42,4 +42,5 @@ public class AssessmentsDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChooseAssessmentsActivity.class);
         startActivity(intent);
     }
+
 }
