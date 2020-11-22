@@ -1,49 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".activities.dashboard.Dashboard">
 
-    <Button
-        android:id="@+id/PatientProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="@string/patientProfileButton" />
-
-    <Button
-        android:id="@+id/dashboardCaregiversButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="@string/caregivers" />
-
-    <Button
-        android:id="@+id/MedicalRecords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="@string/medicalRecordsButton" />
-
-    <Button
-        android:id="@+id/Assessments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="@string/assessmentsButton" />
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_width="320dp"
+        android:layout_height="57dp"
         android:background="@color/colorPrimary"
         android:padding="20dp"
         android:text="@string/logoutBtn"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PatientProfile"
+        android:layout_width="150dp"
+        android:layout_height="133dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.113">
+
+        <ImageView
+            android:id="@+id/ic_heartbeat"
+            android:layout_width="151dp"
+            android:layout_height="107dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_heartbeat" />
+
+        <TextView
+            android:id="@+id/d_PatientProfile"
+            android:layout_width="147dp"
+            android:layout_height="23dp"
+            android:gravity="center"
+            android:text="@string/patientProfileButton"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ic_heartbeat"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dashboardCaregiversButton"
+        android:layout_width="150dp"
+        android:layout_height="133dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.113">
+
+        <ImageView
+            android:id="@+id/ic_caregivers"
+            android:layout_width="151dp"
+            android:layout_height="107dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_caregivers" />
+
+        <TextView
+            android:id="@+id/d_Caregivers"
+            android:layout_width="147dp"
+            android:layout_height="23dp"
+            android:gravity="center"
+            android:text="@string/caregivers"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ic_caregivers"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/MedicalRecords"
+        android:layout_width="150dp"
+        android:layout_height="133dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PatientProfile"
+        app:layout_constraintVertical_bias="0.246">
+
+        <ImageView
+            android:id="@+id/ic_MedicalRecords"
+            android:layout_width="151dp"
+            android:layout_height="107dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_medical_records" />
+
+        <TextView
+            android:id="@+id/d_MedicalRecords"
+            android:layout_width="147dp"
+            android:layout_height="23dp"
+            android:gravity="center"
+            android:text="@string/medicalRecordsButton"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ic_MedicalRecords"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Assessments"
+        android:layout_width="150dp"
+        android:layout_height="133dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashboardCaregiversButton"
+        app:layout_constraintVertical_bias="0.246">
+
+        <ImageView
+            android:id="@+id/ic_assessments"
+            android:layout_width="151dp"
+            android:layout_height="107dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clipboard" />
+
+        <TextView
+            android:id="@+id/d_assessmentsButton"
+            android:layout_width="137dp"
+            android:layout_height="22dp"
+            android:gravity="center"
+            android:text="@string/assessmentsButton"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ic_assessments"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
