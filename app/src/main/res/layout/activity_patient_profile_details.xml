@@ -26,19 +26,50 @@
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="188dp"
-                    android:layout_height="42dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:text="@string/details"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/editPatientProfileButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/editButton" />
+                    android:background="@color/colorPrimary"
+                    android:text="@string/editButton"
+                    android:textColor="#FBFBFB" />
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtViewBloodTypeLabel"
+                    android:layout_width="111dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/bloodType"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtViewBloodTypeValue"
+                    android:layout_width="299dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/empty"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -49,12 +80,13 @@
 
                 <TextView
                     android:id="@+id/txtViewHeightLabel"
-                    android:layout_width="92dp"
+                    android:layout_width="111dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/height"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtViewHeightValue"
@@ -62,30 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/empty"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtViewBloodTypeLabel"
-                    android:layout_width="92dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/bloodType"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/txtViewBloodTypeValue"
-                    android:layout_width="299dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/empty"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -97,12 +106,13 @@
 
                 <TextView
                     android:id="@+id/txtViewWeightLabel"
-                    android:layout_width="92dp"
+                    android:layout_width="110dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/weight"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtViewWeightValue"
@@ -110,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/empty"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -125,14 +136,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/medication"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtViewMedicationValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/empty"
+                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <TextView
@@ -141,14 +154,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/allergies"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtViewAllergiesValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/empty"
+                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <TextView
@@ -157,14 +172,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/medicalHistory"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtViewMedicalHistoryValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/empty"
+                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <TextView
@@ -173,27 +190,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/familyHistory"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtViewFamilyHistoryValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/empty"
+                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/caregiverButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/carevigerInfo" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/carevigerInfo"
+                    android:textColor="#FFFFFF" />
 
-                <TextView
-                    android:id="@+id/textViewTest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
             </LinearLayout>
 
         </LinearLayout>

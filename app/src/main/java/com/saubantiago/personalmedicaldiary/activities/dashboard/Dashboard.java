@@ -7,6 +7,7 @@ import android.widget.Button;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.saubantiago.personalmedicaldiary.R;
@@ -22,14 +23,14 @@ public class Dashboard extends AppCompatActivity {
     long userId;
 
     // Views
-    Button patientProfileButton, medicalRecordsButton, assessmentsButton, caregiversButton,  logoutButton;
+    Button logoutButton;
+    ConstraintLayout patientProfileButton, medicalRecordsButton, assessmentsButton, caregiversButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
         // initialization
-        //this.getUserSession();
         this.findAllViews();
         this.setListeners();
     }
