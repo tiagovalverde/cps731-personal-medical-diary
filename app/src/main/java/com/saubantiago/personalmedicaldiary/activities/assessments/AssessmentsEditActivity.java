@@ -38,6 +38,7 @@ public class AssessmentsEditActivity extends AppCompatActivity {
     // live data
     private List<Questions> questions;
     AnswersViewModel answersViewModel;
+    Answers answers;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,13 +102,21 @@ public class AssessmentsEditActivity extends AppCompatActivity {
     }
 
     private void saveAssessment() {
+        answersViewModel = ViewModelProviders.of(this).get(AnswersViewModel.class);
+
         for(int i = 1; i < questions.size()+1; i++){
             EditText ed = findViewById(i);
 
-            Answers answers = new Answers(ed.getText().toString(), assessmentType, allTvs.get(i-1).getText().toString());
+            answers = new Answers(ed.getText().toString(), assessmentType, allTvs.get(i-1).getText().toString());
             answersViewModel.insert(answers);
         }
+        returnToAssessmentDetails();
     }
+    private void returnToAssessmentDetails() {
+        Intent intent = new Intent(this, AssessmentsDetailsActivity.class);
+        startActivity(intent);
+    }
+
 
     private void displayBackButton() {
         assert getSupportActionBar() != null;   //null check

@@ -75,8 +75,9 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
     }
 
     private void createEntry(String assessment) {
+        sfViewModel = ViewModelProviders.of(this).get(SelfAssessmentsViewModel.class);
         SelfAssessments sf = new SelfAssessments(assessment, user.getUid());
-        System.out.println(sf.toString());
+        //System.out.println(sf.toString());
         sfViewModel.insert(sf);
 
         ChooseAssessmentsActivity.this.launchAssessmentQuestionnaire(assessment);

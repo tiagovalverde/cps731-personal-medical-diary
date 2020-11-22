@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 
 import java.util.List;
@@ -26,6 +27,6 @@ public interface SelfAssessmentsDao {
     @Query("SELECT * from self_assessments ORDER BY id ASC")
     LiveData<List<SelfAssessments>> getAll();
 
-    @Query("SELECT * FROM self_assessments WHERE id LIKE :id ")
-    public List<SelfAssessments> findSelfAssessments(int id);
+    @Query("SELECT * FROM self_assessments WHERE user_uid LIKE :userUID ")
+    LiveData<List<SelfAssessments>> getAllByUserUID(String userUID);
 }
