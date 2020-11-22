@@ -72,7 +72,7 @@
 
         <ImageView
             android:id="@+id/ic_caregivers"
-            android:layout_width="151dp"
+            android:layout_width="144dp"
             android:layout_height="107dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
