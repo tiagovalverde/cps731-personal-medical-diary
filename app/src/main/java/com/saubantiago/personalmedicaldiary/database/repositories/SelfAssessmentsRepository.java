@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.saubantiago.personalmedicaldiary.database.dao.SelfAssessmentsDao;
+import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 import com.saubantiago.personalmedicaldiary.database.room.AppRoomDatabase;
 
@@ -24,6 +25,10 @@ public class SelfAssessmentsRepository {
 
     public LiveData<List<SelfAssessments>> getAllSelfAssessments() {
         return allSelfAssessments;
+    }
+
+    public LiveData<List<SelfAssessments>> getAllByUserUID(String userUID) {
+        return selfAssessmentsDao.getAllByUserUID(userUID);
     }
 
     /***************************************

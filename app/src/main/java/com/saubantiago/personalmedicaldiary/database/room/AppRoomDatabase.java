@@ -46,11 +46,9 @@ public abstract class AppRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (AppRoomDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppRoomDatabase.class, "personal_medical_diary_dev")
-                            // Wipes and rebuilds instead of migrating
-                            // if no Migration object.
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppRoomDatabase.class, "personal_medical_diary_dev")
                             .fallbackToDestructiveMigration()
+                            .createFromAsset("databases/questions.db")
                             .build();
                 }
             }

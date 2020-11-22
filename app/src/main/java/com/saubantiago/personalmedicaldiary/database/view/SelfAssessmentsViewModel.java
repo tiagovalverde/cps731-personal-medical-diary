@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 import com.saubantiago.personalmedicaldiary.database.repositories.SelfAssessmentsRepository;
 
@@ -14,7 +15,6 @@ import java.util.List;
 public class SelfAssessmentsViewModel extends AndroidViewModel {
 
     private SelfAssessmentsRepository repository;
-
     private LiveData<List<SelfAssessments>> allSelfAssessments;
 
     public SelfAssessmentsViewModel(@NonNull Application application) {
@@ -25,6 +25,10 @@ public class SelfAssessmentsViewModel extends AndroidViewModel {
 
     public LiveData<List<SelfAssessments>> getAllSelfAssessments() {
         return allSelfAssessments;
+    }
+
+    public LiveData<List<SelfAssessments>> getAllAssessmentsByUserUID(String userUID) {
+        return repository.getAllByUserUID(userUID);
     }
 
     public void insert(SelfAssessments selfAssessments) {

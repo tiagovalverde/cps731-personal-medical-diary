@@ -10,18 +10,31 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.saubantiago.personalmedicaldiary.R;
+import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
+import com.saubantiago.personalmedicaldiary.database.view.SelfAssessmentsViewModel;
+
+import static com.saubantiago.personalmedicaldiary.constants.Constants.EXTRA_DATA_SELF_ASSESSMENT;
 
 public class ChooseAssessmentsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // Views
     Button createChosenAssessmentButton;
+
+    //Data
+    FirebaseUser user;
+    SelfAssessments sf;
+    SelfAssessmentsViewModel sfViewModel;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_assessments);
 
         // initialization
+        user = FirebaseAuth.getInstance().getCurrentUser();
         Spinner spinner = this.setSpinner();
         this.findAllViews();
         this.setListeners(spinner);
@@ -52,16 +65,27 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
 
     private void setListeners(final Spinner spinner) {
         createChosenAssessmentButton.setOnClickListener(new View.OnClickListener() {
-            final String asmnt = spinner.getSelectedItem().toString();
+            final String assessment = spinner.getSelectedItem().toString();
             @Override
             public void onClick(View v) {
-                ChooseAssessmentsActivity.this.launchAssessmentQuestionnaire(asmnt);
+                ChooseAssessmentsActivity.this.createEntry(assessment);
+
             }
         });
     }
-    private void launchAssessmentQuestionnaire(String asmnt) {
+
+    private void createEntry(String assessment) {
+        sfViewModel = ViewModelProviders.of(this).get(SelfAssessmentsViewModel.class);
+        SelfAssessments sf = new SelfAssessments(assessment, user.getUid());
+        //System.out.println(sf.toString());
+        sfViewModel.insert(sf);
+
+        ChooseAssessmentsActivity.this.launchAssessmentQuestionnaire(assessment);
+    }
+
+    private void launchAssessmentQuestionnaire(String assessment) {
         Intent intent = new Intent(this, AssessmentsEditActivity.class);
-        intent.putExtra("getData", asmnt.toString());
+        intent.putExtra(EXTRA_DATA_SELF_ASSESSMENT, assessment.toString());
         startActivity(intent);
     }
 }

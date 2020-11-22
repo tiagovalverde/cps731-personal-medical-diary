@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.saubantiago.personalmedicaldiary.R;
 
+import com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDetailsActivity;
 import com.saubantiago.personalmedicaldiary.activities.auth.LoginActivity;
 import com.saubantiago.personalmedicaldiary.activities.caregiver.CaregiverDetailsActivity;
 import com.saubantiago.personalmedicaldiary.activities.medicalrecords.MedicalRecordsListActivity;
@@ -63,8 +64,7 @@ public class Dashboard extends AppCompatActivity {
         assessmentsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Assessments List activity screen missing
-                // Dashboard.this.launchActivity();
+                launchActivity(AssessmentsDetailsActivity.class);
             }
         });
         logoutButton.setOnClickListener(new View.OnClickListener() {

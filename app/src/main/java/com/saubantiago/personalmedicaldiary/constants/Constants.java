@@ -8,4 +8,7 @@ public class Constants {
     // Medical Records
     public static final String EXTRA_DATA_MEDICAL_RECORD = "extra_medical_record";
     public static final String EXTRA_DATA_USER = "extra_user";
+
+    // Self Assessments
+    public static final String EXTRA_DATA_SELF_ASSESSMENT = "extra_self_assessment";
 }
