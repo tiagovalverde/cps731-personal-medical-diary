@@ -101,6 +101,13 @@
                 android:value="com.saubantiago.personalmedicaldiary.activities.assessments.ChooseAssessmentsActivity" />
         </activity>
         <activity
+            android:name=".activities.assessments.AssessmentsViewActivity"
+            android:label="View Assessments">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.saubantiago.personalmedicaldiary.activities.assessments.AssessmentsDetailsActivity" />
+        </activity>
+        <activity
             android:name=".activities.medicalrecords.MedicalRecordEditActivity"
             android:label="Edit Medical Record"></activity>
         <activity

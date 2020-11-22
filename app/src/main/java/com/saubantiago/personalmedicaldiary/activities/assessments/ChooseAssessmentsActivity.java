@@ -24,17 +24,11 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
     // Views
     Button createChosenAssessmentButton;
 
-    //Data
-    FirebaseUser user;
-    SelfAssessments sf;
-    SelfAssessmentsViewModel sfViewModel;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_assessments);
 
         // initialization
-        user = FirebaseAuth.getInstance().getCurrentUser();
         Spinner spinner = this.setSpinner();
         this.findAllViews();
         this.setListeners(spinner);
@@ -60,7 +54,6 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
     private void findAllViews() {
         //Button
         createChosenAssessmentButton = findViewById(R.id.CreateChosenAssessment);
-
     }
 
     private void setListeners(final Spinner spinner) {
@@ -69,17 +62,11 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
             @Override
             public void onClick(View v) {
                 ChooseAssessmentsActivity.this.createEntry(assessment);
-
             }
         });
     }
 
     private void createEntry(String assessment) {
-        sfViewModel = ViewModelProviders.of(this).get(SelfAssessmentsViewModel.class);
-        SelfAssessments sf = new SelfAssessments(assessment, user.getUid());
-        //System.out.println(sf.toString());
-        sfViewModel.insert(sf);
-
         ChooseAssessmentsActivity.this.launchAssessmentQuestionnaire(assessment);
     }
 

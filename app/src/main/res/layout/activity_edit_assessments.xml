@@ -17,4 +17,59 @@
         android:gravity="center_horizontal"
         android:padding="20dp" />
 
+    <TextView
+        android:id="@+id/textViewQuestion1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question1"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:padding="20dp" />
+
+    <EditText
+        android:id="@+id/editTextAnswer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:autofillHints="Enter Answer" />
+
+    <TextView
+        android:id="@+id/textViewQuestion2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question2"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:padding="20dp" />
+
+    <EditText
+        android:id="@+id/editTextAnswer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:autofillHints="Enter Answer" />
+    <TextView
+        android:id="@+id/textViewQuestion3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question2"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:padding="20dp" />
+
+    <EditText
+        android:id="@+id/editTextAnswer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:autofillHints="Enter Answer" />
+
+    <Button
+        android:id="@+id/saveAssessmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/saveButton" />
+
+
+
 </LinearLayout>

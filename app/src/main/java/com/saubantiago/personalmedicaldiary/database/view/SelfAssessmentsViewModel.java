@@ -38,4 +38,9 @@ public class SelfAssessmentsViewModel extends AndroidViewModel {
     public void update(SelfAssessments selfAssessments) {
         repository.update(selfAssessments);
     }
+
+    public void delete(SelfAssessments selfAssessments) {
+        repository.delete(selfAssessments);
+    }
+
 }

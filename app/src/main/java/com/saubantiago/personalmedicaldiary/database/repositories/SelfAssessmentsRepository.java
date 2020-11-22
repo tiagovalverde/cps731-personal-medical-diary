@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.saubantiago.personalmedicaldiary.database.dao.MedicalRecordDao;
 import com.saubantiago.personalmedicaldiary.database.dao.SelfAssessmentsDao;
 import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
@@ -41,6 +42,9 @@ public class SelfAssessmentsRepository {
     public void update(SelfAssessments selfAssessments)  {
         new SelfAssessmentsRepository.updateAsyncTask(selfAssessmentsDao).execute(selfAssessments);
     }
+    public void delete(SelfAssessments selfAssessments) {
+        new SelfAssessmentsRepository.deleteAsyncTask(selfAssessmentsDao).execute(selfAssessments);
+    }
 
     /***************************************
      * ASYNC TASKS
@@ -69,6 +73,19 @@ public class SelfAssessmentsRepository {
         @Override
         protected Void doInBackground(SelfAssessments... selfAssessments) {
             asyncTaskSelfAssessmentsDao.update(selfAssessments[0]);
+            return null;
+        }
+    }
+    private static class deleteAsyncTask extends AsyncTask<SelfAssessments, Void, Void> {
+        private SelfAssessmentsDao asyncTaskDao;
+
+        deleteAsyncTask(SelfAssessmentsDao dao) {
+            asyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(SelfAssessments... selfAssessments) {
+            asyncTaskDao.delete(selfAssessments[0]);
             return null;
         }
     }
