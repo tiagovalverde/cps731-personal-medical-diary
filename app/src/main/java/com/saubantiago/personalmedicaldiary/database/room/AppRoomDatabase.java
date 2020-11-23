@@ -48,7 +48,6 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppRoomDatabase.class, "personal_medical_diary_dev")
                             .fallbackToDestructiveMigration()
-                            .createFromAsset("databases/questions.db")
                             .build();
                 }
             }

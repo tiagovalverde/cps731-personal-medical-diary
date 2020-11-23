@@ -202,7 +202,7 @@ public class AssessmentsEditActivity extends AppCompatActivity {
     }
 
     private void setObserver() {
-        questionsViewModel = ViewModelProviders.of(this).get(QuestionsViewModel.class);
+
         questionsViewModel.getAllQuestions().observe(this, new Observer<List<Questions>>() {
             @Override
             public void onChanged(List<Questions> _questions) {
@@ -213,6 +213,7 @@ public class AssessmentsEditActivity extends AppCompatActivity {
     }
 
     private void postQuestions() {
+        System.out.println(questions.toString());
         textViewQuestion1.setText(questions.get(0).getQuestion());
         textViewQuestion2.setText(questions.get(1).getQuestion());
         textViewQuestion3.setText(questions.get(2).getQuestion());
