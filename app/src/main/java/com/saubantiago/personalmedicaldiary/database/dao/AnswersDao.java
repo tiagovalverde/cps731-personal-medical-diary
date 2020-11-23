@@ -33,4 +33,7 @@ public interface AnswersDao {
     @Query("SELECT * FROM answers WHERE assessment_id LIKE :assessmentID")
     public LiveData<List<Answers>> getAllAnswersByID(long assessmentID);
 
+    @Query("SELECT * FROM answers WHERE assessment_id LIKE :assessmentID")
+    public List<Answers> getAllStaticAnswers(long assessmentID);
+
 }

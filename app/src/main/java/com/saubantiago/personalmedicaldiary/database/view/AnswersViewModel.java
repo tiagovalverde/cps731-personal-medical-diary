@@ -28,6 +28,10 @@ public class AnswersViewModel extends AndroidViewModel {
         return repository.getAnswersByAssessmentID(id);
     }
 
+    public List<Answers> getAllStaticAnswers(Long id) {
+        return repository.getAllStaticAnswers(id);
+    }
+
 
     public void insert(Answers answers) {
         repository.insert(answers);

@@ -2,6 +2,7 @@ package com.saubantiago.personalmedicaldiary.activities.assessments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import com.saubantiago.personalmedicaldiary.database.view.SelfAssessmentsViewMod
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.saubantiago.personalmedicaldiary.constants.Constants.EXTRA_DATA_ANSWER;
 import static com.saubantiago.personalmedicaldiary.constants.Constants.EXTRA_DATA_SELF_ASSESSMENT;
 
 public class AssessmentsEditActivity extends AppCompatActivity {
@@ -165,7 +167,13 @@ public class AssessmentsEditActivity extends AppCompatActivity {
         answersViewModel.update(answer2);
         answersViewModel.update(answer3);
 
+        ArrayList<Answers> newAnswers= new ArrayList<Answers>();
+        newAnswers.add(answer1);
+        newAnswers.add(answer2);
+        newAnswers.add(answer3);
+
         replyIntent.putExtra(EXTRA_DATA_SELF_ASSESSMENT, this.sf);
+        replyIntent.putExtra(EXTRA_DATA_ANSWER, newAnswers);
         setResult(RESULT_OK, replyIntent);
         finish();
     }
@@ -209,7 +217,7 @@ public class AssessmentsEditActivity extends AppCompatActivity {
         textViewQuestion2.setText(questions.get(1).getQuestion());
         textViewQuestion3.setText(questions.get(2).getQuestion());
 
-        /**
+        /**TODO remove hardcoded variables
         saveButton = new Button(this);
         allTvs = new ArrayList<TextView>();
         String save = "Save";

@@ -26,6 +26,7 @@ import com.saubantiago.personalmedicaldiary.database.view.SelfAssessmentsViewMod
 
 import java.util.List;
 
+import static com.saubantiago.personalmedicaldiary.constants.Constants.EXTRA_DATA_ANSWER;
 import static com.saubantiago.personalmedicaldiary.constants.Constants.EXTRA_DATA_SELF_ASSESSMENT;
 
 public class AssessmentsViewActivity extends AppCompatActivity {
@@ -40,6 +41,7 @@ public class AssessmentsViewActivity extends AppCompatActivity {
     private SelfAssessments selfAssessment;
     private List<Answers> answersList;
     Long id;
+    Answers answer1;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,12 +168,14 @@ public class AssessmentsViewActivity extends AppCompatActivity {
         try {
             super.onActivityResult(requestCode, resultCode, data);
             this.selfAssessment = (SelfAssessments) data.getSerializableExtra(EXTRA_DATA_SELF_ASSESSMENT);
+            this.answersList = (List) data.getSerializableExtra(EXTRA_DATA_ANSWER);
             this.populateData();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
         }
     }
+
 
     private void getDataFromIntent() {
         if(getIntent().getExtras() != null) {

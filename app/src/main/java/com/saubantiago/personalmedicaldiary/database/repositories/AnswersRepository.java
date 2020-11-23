@@ -45,6 +45,8 @@ public class AnswersRepository {
 
     public LiveData<List<Answers>> getAnswersByAssessmentID(Long id){return answersDao.getAllAnswersByID(id);}
 
+    public List<Answers> getAllStaticAnswers(Long id){return answersDao.getAllStaticAnswers(id);}
+
     /***************************************
      * ASYNC TASKS
      ***************************************/
