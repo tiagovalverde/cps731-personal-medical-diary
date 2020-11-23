@@ -9,12 +9,12 @@
 
     <Button
         android:id="@+id/addMedicalRecordButton"
-        android:layout_width="295dp"
-        android:layout_height="52dp"
+        android:layout_width="322dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="32dp"
         android:background="@color/colorPrimary"
         android:text="@string/add_medical_record"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/rv_medical_record_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,9 @@
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMedicalRecordButton" />
+        app:layout_constraintTop_toBottomOf="@+id/addMedicalRecordButton"
+        app:layout_constraintVertical_bias="0.609" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

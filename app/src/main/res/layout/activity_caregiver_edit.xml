@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     tools:context=".activities.caregiver.CaregiverEditActivity">
 
@@ -12,13 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/fname"
-        android:textColor="#000000" />
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/editTextFName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginBottom="5dp"
+        android:ems="10"
         android:text="" />
 
     <TextView
@@ -26,13 +33,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lname"
-        android:textColor="#000000" />
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/editTextLName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginBottom="5dp"
+        android:ems="10"
         android:text="" />
 
     <TextView
@@ -40,31 +49,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/phone"
-        android:textColor="#000000" />
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="5dp"
+        android:ems="10" />
 
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/email"
-        android:textColor="#000000" />
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="5dp"
+        android:ems="10" />
 
     <Button
         android:id="@+id/caregiverSaveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/saveButton" />
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/saveButton"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

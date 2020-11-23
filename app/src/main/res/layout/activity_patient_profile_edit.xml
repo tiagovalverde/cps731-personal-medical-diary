@@ -9,104 +9,134 @@
     android:layout_margin="10dp"
     >
 
-    <TextView
-        android:id="@+id/textViewWeight"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weight"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextWeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp"
-        android:text="" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/height"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp"
-        android:text="" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textViewBloodType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/bloodType"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextBloodType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+            <TextView
+                android:id="@+id/textViewHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/height"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewMedication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/medication"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextMedication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+            <EditText
+                android:id="@+id/editTextHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:text="" />
 
-    <TextView
-        android:id="@+id/textViewAllergies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/allergies"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextAllergies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+            <TextView
+                android:id="@+id/textViewWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewMedicalHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/medicalHistory"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextMedicalHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+            <EditText
+                android:id="@+id/editTextWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:text="" />
 
-    <TextView
-        android:id="@+id/textViewFamilyHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/familyHistory"
-        android:textColor="#000000" />
-    <EditText
-        android:id="@+id/editTextFamilyHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginBottom="5dp" />
+            <TextView
+                android:id="@+id/textViewBloodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bloodType"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/editTextBloodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10" />
 
-    <Button
-        android:id="@+id/patientProfileSaveButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/saveButton" />
+            <TextView
+                android:id="@+id/textViewAllergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/allergies"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextAllergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/textViewMedication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medication"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextMedication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/textViewMedicalHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medicalHistory"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextMedicalHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/textViewFamilyHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/familyHistory"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextFamilyHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10" />
+
+            <Button
+                android:id="@+id/patientProfileSaveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/saveButton"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
