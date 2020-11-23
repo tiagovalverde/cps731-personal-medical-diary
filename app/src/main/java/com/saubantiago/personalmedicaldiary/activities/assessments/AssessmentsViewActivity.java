@@ -168,7 +168,6 @@ public class AssessmentsViewActivity extends AppCompatActivity {
         try {
             super.onActivityResult(requestCode, resultCode, data);
             this.selfAssessment = (SelfAssessments) data.getSerializableExtra(EXTRA_DATA_SELF_ASSESSMENT);
-            this.answersList = (List) data.getSerializableExtra(EXTRA_DATA_ANSWER);
             this.populateData();
         } catch (Exception e) {
             System.out.println(e.getMessage());

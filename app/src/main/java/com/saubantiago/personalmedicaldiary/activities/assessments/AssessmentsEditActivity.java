@@ -159,21 +159,15 @@ public class AssessmentsEditActivity extends AppCompatActivity {
 
         findAllViews();
 
-        answer1 = new Answers(editTextAnswer1.getText().toString(), id, textViewQuestion1.getText().toString());
-        answer2 = new Answers(editTextAnswer2.getText().toString(), id, textViewQuestion2.getText().toString());
-        answer3 = new Answers(editTextAnswer3.getText().toString(), id, textViewQuestion3.getText().toString());
+        answersList.get(0).setAnswer(editTextAnswer1.getText().toString());
+        answersList.get(1).setAnswer(editTextAnswer2.getText().toString());
+        answersList.get(2).setAnswer(editTextAnswer3.getText().toString());
 
-        answersViewModel.update(answer1);
-        answersViewModel.update(answer2);
-        answersViewModel.update(answer3);
-
-        ArrayList<Answers> newAnswers= new ArrayList<Answers>();
-        newAnswers.add(answer1);
-        newAnswers.add(answer2);
-        newAnswers.add(answer3);
+        answersViewModel.update(answersList.get(0));
+        answersViewModel.update(answersList.get(1));
+        answersViewModel.update(answersList.get(2));
 
         replyIntent.putExtra(EXTRA_DATA_SELF_ASSESSMENT, this.sf);
-        replyIntent.putExtra(EXTRA_DATA_ANSWER, newAnswers);
         setResult(RESULT_OK, replyIntent);
         finish();
     }
