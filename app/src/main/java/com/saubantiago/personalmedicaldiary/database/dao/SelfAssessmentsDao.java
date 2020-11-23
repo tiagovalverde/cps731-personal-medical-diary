@@ -2,6 +2,7 @@ package com.saubantiago.personalmedicaldiary.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -14,12 +15,14 @@ import java.util.List;
 
 @Dao
 public interface SelfAssessmentsDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(SelfAssessments selfAssessments);
+    long insert(SelfAssessments selfAssessments);
 
     @Update
-    public void update(SelfAssessments... selfAssessments);
+    void update(SelfAssessments... selfAssessments);
+
+    @Delete
+    void delete(SelfAssessments selfAssessments);
 
     @Query("DELETE FROM self_assessments")
     void deleteAll();

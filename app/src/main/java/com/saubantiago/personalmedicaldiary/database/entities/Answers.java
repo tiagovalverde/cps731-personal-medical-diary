@@ -19,19 +19,19 @@ public class Answers implements Serializable {
     private String answer;
 
     @ColumnInfo(name = "assessment_id")
-    private String assessmentID;
+    private Long assessmentID;
 
     @ColumnInfo(name = "question_id")
     private String questionID;
 
 
-    public Answers(String answer, String assessmentID, String questionID) {
+    public Answers(String answer,Long assessmentID, String questionID) {
         this.answer = answer;
         this.assessmentID = assessmentID;
         this.questionID = questionID;
     }
     @Ignore
-    public Answers(int id, String answer, String assessmentID, String questionID) {
+    public Answers(int id, String answer, Long assessmentID, String questionID) {
         this.id = id;
         this.answer = answer;
         this.assessmentID = assessmentID;
@@ -54,11 +54,11 @@ public class Answers implements Serializable {
         this.answer = answer;
     }
 
-    public void setAssessmentID(String assessmentID) {
+    public void setAssessmentID(Long assessmentID) {
         this.assessmentID= assessmentID;
     }
 
-    public String getAssessmentID() {
+    public Long getAssessmentID() {
         return assessmentID;
     }
 

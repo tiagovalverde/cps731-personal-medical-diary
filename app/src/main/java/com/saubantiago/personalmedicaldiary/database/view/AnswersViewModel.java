@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.saubantiago.personalmedicaldiary.database.entities.Answers;
+import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 import com.saubantiago.personalmedicaldiary.database.repositories.AnswersRepository;
 
 import java.util.List;
@@ -23,9 +24,14 @@ public class AnswersViewModel extends AndroidViewModel {
         allAnswers = repository.getAllAnswers();
     }
 
-    public LiveData<List<Answers>> getAllAnswers() {
-        return allAnswers;
+    public LiveData<List<Answers>> getAnswersByAssessmentID(Long id) {
+        return repository.getAnswersByAssessmentID(id);
     }
+
+    public List<Answers> getAllStaticAnswers(Long id) {
+        return repository.getAllStaticAnswers(id);
+    }
+
 
     public void insert(Answers answers) {
         repository.insert(answers);
@@ -33,5 +39,9 @@ public class AnswersViewModel extends AndroidViewModel {
 
     public void update(Answers answers) {
         repository.update(answers);
+    }
+
+    public void delete(Answers answers) {
+        repository.delete(answers);
     }
 }
