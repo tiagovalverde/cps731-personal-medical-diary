@@ -11,4 +11,5 @@ public class Constants {
 
     // Self Assessments
     public static final String EXTRA_DATA_SELF_ASSESSMENT = "extra_self_assessment";
+    public static final String TAG = "Insert ID ";
 }

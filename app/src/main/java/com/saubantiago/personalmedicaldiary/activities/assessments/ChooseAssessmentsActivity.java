@@ -3,6 +3,7 @@ package com.saubantiago.personalmedicaldiary.activities.assessments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,17 +22,26 @@ import com.saubantiago.personalmedicaldiary.R;
 import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 import com.saubantiago.personalmedicaldiary.database.view.SelfAssessmentsViewModel;
 
+import java.util.List;
+
 import static com.saubantiago.personalmedicaldiary.constants.Constants.EXTRA_DATA_SELF_ASSESSMENT;
 
 public class ChooseAssessmentsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private static final String TAG = "Insert ID ";
     // Views
     Button createChosenAssessmentButton;
+
+    // Data
+    FirebaseUser user;
+    SelfAssessments sf;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_assessments);
 
         // initialization
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         Spinner spinner = this.setSpinner();
         this.findAllViews();
         this.setListeners(spinner);
@@ -58,10 +71,12 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
 
     private void setListeners(final Spinner spinner) {
         createChosenAssessmentButton.setOnClickListener(new View.OnClickListener() {
-            final String assessment = spinner.getSelectedItem().toString();
+
+            final String assessmentType = spinner.getSelectedItem().toString();
+
             @Override
             public void onClick(View v) {
-                ChooseAssessmentsActivity.this.createEntry(assessment);
+                ChooseAssessmentsActivity.this.createEntry(assessmentType);
             }
         });
     }
@@ -70,10 +85,15 @@ public class ChooseAssessmentsActivity extends AppCompatActivity implements Adap
         ChooseAssessmentsActivity.this.launchAssessmentQuestionnaire(assessment);
     }
 
-    private void launchAssessmentQuestionnaire(String assessment) {
+    private void launchAssessmentQuestionnaire(String assessmentType) {
+        sf = new SelfAssessments(assessmentType, user.getUid());
+
         Intent intent = new Intent(this, AssessmentsEditActivity.class);
-        intent.putExtra(EXTRA_DATA_SELF_ASSESSMENT, assessment.toString());
+        intent.putExtra(EXTRA_DATA_SELF_ASSESSMENT, sf);
         startActivity(intent);
     }
+
+
+
 }
 

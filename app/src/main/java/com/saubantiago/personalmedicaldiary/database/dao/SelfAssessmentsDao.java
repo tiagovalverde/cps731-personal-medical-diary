@@ -16,7 +16,7 @@ import java.util.List;
 @Dao
 public interface SelfAssessmentsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(SelfAssessments selfAssessments);
+    long insert(SelfAssessments selfAssessments);
 
     @Update
     void update(SelfAssessments... selfAssessments);

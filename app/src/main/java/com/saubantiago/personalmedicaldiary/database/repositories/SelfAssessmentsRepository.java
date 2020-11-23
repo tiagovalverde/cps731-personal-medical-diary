@@ -4,10 +4,9 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-import com.saubantiago.personalmedicaldiary.database.dao.MedicalRecordDao;
 import com.saubantiago.personalmedicaldiary.database.dao.SelfAssessmentsDao;
-import com.saubantiago.personalmedicaldiary.database.entities.MedicalRecord;
 import com.saubantiago.personalmedicaldiary.database.entities.SelfAssessments;
 import com.saubantiago.personalmedicaldiary.database.room.AppRoomDatabase;
 
@@ -34,10 +33,12 @@ public class SelfAssessmentsRepository {
 
     /***************************************
      * CRUD ACTIONS
-     ***************************************/
-    public void insert (SelfAssessments selfAssessments) {
-        new SelfAssessmentsRepository.insertAsyncTask(selfAssessmentsDao).execute(selfAssessments);
+     **************************************
+     * @return*/
+    public void insert(MutableLiveData<Long> id, SelfAssessments selfAssessments) {
+        new SelfAssessmentsRepository.insertAsyncTask(id, selfAssessmentsDao).execute(selfAssessments);
     }
+
 
     public void update(SelfAssessments selfAssessments)  {
         new SelfAssessmentsRepository.updateAsyncTask(selfAssessmentsDao).execute(selfAssessments);
@@ -49,17 +50,30 @@ public class SelfAssessmentsRepository {
     /***************************************
      * ASYNC TASKS
      ***************************************/
-    private static class insertAsyncTask extends AsyncTask<SelfAssessments, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<SelfAssessments, Void, Long> {
         private SelfAssessmentsDao asyncTaskSelfAssessmentsDao;
+        private MutableLiveData<Long> id;
 
-        insertAsyncTask(SelfAssessmentsDao dao) {
-            asyncTaskSelfAssessmentsDao = dao;
+        private insertAsyncTask(MutableLiveData<Long> id, SelfAssessmentsDao dao) {
+            this.asyncTaskSelfAssessmentsDao = dao;
+            this.id = id;
         }
 
         @Override
-        protected Void doInBackground(SelfAssessments... selfAssessments) {
-            asyncTaskSelfAssessmentsDao.insert(selfAssessments[0]);
-            return null;
+        protected Long doInBackground(SelfAssessments... selfAssessments) {
+            return asyncTaskSelfAssessmentsDao.insert(selfAssessments[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Long insertId) {
+            id.postValue(insertId);
+            super.onPostExecute(insertId);
+        }
+
+        @Override
+        protected void onCancelled() {
+            id.postValue(new Long(0));
+            super.onCancelled();
         }
     }
 

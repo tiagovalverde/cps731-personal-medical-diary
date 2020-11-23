@@ -21,13 +21,16 @@ public interface AnswersDao {
     @Update
     public void update(Answers... answers);
 
+    @Delete
+    void delete(Answers answers);
+
     @Query("DELETE FROM answers")
     void deleteAll();
 
     @Query("SELECT * from answers ORDER BY id ASC")
     LiveData<List<Answers>> getAll();
 
-    @Query("SELECT * FROM answers WHERE :id LIKE :id ")
-    public List<Answers> findAnswers(long id);
+    @Query("SELECT * FROM answers WHERE assessment_id LIKE :assessmentID")
+    public LiveData<List<Answers>> getAllAnswersByID(long assessmentID);
 
 }
